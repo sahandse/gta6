@@ -388,6 +388,107 @@
     });
   }
 
+
+  /* ---------------- resources ---------------- */
+  const resWrap = $("[data-resources]");
+  if (resWrap && typeof RESOURCES !== "undefined") {
+    const search = $("[data-resource-search]");
+    const tagSel = $("[data-resource-tag]");
+    const pillsWrap = $("[data-resource-cats]");
+    const countEl = $("[data-resource-count]");
+
+    let cat = "all";
+    let tag = "all";
+    let q = "";
+
+    pillsWrap.innerHTML =
+      '<button class="pill active" data-res-cat="all">همه</button>' +
+      RESOURCES.categories
+        .map((c) => `<button class="pill" data-res-cat="${c.id}">${c.icon} ${c.title.split("—")[0].trim()}</button>`)
+        .join("");
+
+    const pills = () => $$("[data-res-cat]", pillsWrap);
+
+    function renderResources() {
+      let total = 0;
+      resWrap.innerHTML = "";
+
+      RESOURCES.categories.forEach((c) => {
+        if (cat !== "all" && cat !== c.id) return;
+
+        const items = c.items.filter((it) => {
+          const okTag = tag === "all" || it.tag === tag;
+          const okQ =
+            !q ||
+            norm([it.name, it.fa, it.desc, it.license, c.title].join(" ")).includes(q);
+          return okTag && okQ;
+        });
+        if (!items.length) return;
+        total += items.length;
+
+        const section = document.createElement("section");
+        section.className = "resource-section reveal in";
+        section.id = c.id;
+        section.innerHTML = `
+          <div class="res-section-head">
+            <span class="res-section-icon" style="background:${grad(c.color)}">${c.icon}</span>
+            <div>
+              <h2>${c.title}</h2>
+              <span class="res-section-count">${items.length.toLocaleString("fa-IR")} مورد</span>
+            </div>
+          </div>
+          <div class="res-grid">
+            ${items
+              .map(
+                (it) => `
+              <a class="res-card" href="${it.url}" target="_blank" rel="noopener noreferrer">
+                <div class="res-top">
+                  <span class="res-name">${it.name}<small>${it.fa}</small></span>
+                  <span class="res-badge ${it.tag}">${it.tag === "free" ? "رایگان" : "فریمیوم"}</span>
+                </div>
+                <p>${it.desc}</p>
+                <div class="res-foot">
+                  <span class="res-license">${it.license}</span>
+                  <span class="res-arrow" aria-hidden="true">↗</span>
+                </div>
+              </a>`
+              )
+              .join("")}
+          </div>`;
+        resWrap.appendChild(section);
+      });
+
+      if (!total) {
+        resWrap.appendChild(emptyState("عبارت جست‌وجو یا فیلتر را تغییر دهید."));
+      }
+      if (countEl) countEl.textContent = `${total.toLocaleString("fa-IR")} منبع در این نمایش`;
+    }
+
+    pillsWrap.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-res-cat]");
+      if (!btn) return;
+      pills().forEach((p) => p.classList.remove("active"));
+      btn.classList.add("active");
+      cat = btn.dataset.resCat;
+      renderResources();
+    });
+
+    if (search)
+      search.addEventListener("input", () => {
+        q = norm(search.value);
+        renderResources();
+      });
+    if (tagSel) {
+      tagSel.value = "all";
+      tagSel.addEventListener("change", () => {
+        tag = tagSel.value;
+        renderResources();
+      });
+    }
+
+    renderResources();
+  }
+
   /* ---------------- footer year ---------------- */
   const yearEl = $("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

@@ -15,6 +15,7 @@ A fully responsive GTA 6 fan hub with a neon Vice City theme: interactive map, v
 | **سلاح‌ها** | مقایسه‌ی قدرت، سرعت شلیک و برد هر سلاح |
 | **اخبار** | فهرست اخبار با فیلتر دسته‌بندی و جست‌وجو |
 | **چیت‌ها** | کدهای PS5/Xbox با دکمه‌ی کپی یک‌کلیکی |
+| **منابع** | ۲۱ ابزار منتخب طراحی (Motion، Anime.js، shadcn/ui، Magic UI، Mobbin، Spline و…) با فیلتر، جست‌وجو و لایسنس |
 
 ## 🧱 تکنولوژی
 
@@ -35,10 +36,12 @@ A fully responsive GTA 6 fan hub with a neon Vice City theme: interactive map, v
 ├── weapons.html          # سلاح‌ها
 ├── news.html             # اخبار
 ├── cheats.html           # چیت‌کدها
+├── resources.html        # منابع و ابزارهای طراحی
 └── assets/
     ├── css/style.css     # تمام استایل‌ها و ریسپانسیو
     └── js/
         ├── data.js       # داده‌های سایت (قابل ویرایش)
+        ├── resources.js  # فهرست ابزارها و منابع
         └── app.js        # رندر، فیلتر و تعامل‌ها
 ```
 
@@ -60,14 +63,19 @@ python -m http.server 8000
 
 ## ✏️ ویرایش داده‌ها
 
-همه‌ی محتوا در `assets/js/data.js` است. برای افزودن خودرو:
+همه‌ی محتوای GTA در `assets/js/data.js` و فهرست ابزارها در `assets/js/resources.js` است. برای افزودن خودرو:
 
 ```js
 { name: "اسم ماشین", cls: "Super", maker: "برند", speed: 95, handling: 88,
   price: "$2,000,000", tags: ["تگ"], color: ["#ff2d95", "#ff8a00"] }
 ```
 
-نقشه، شخصیت‌ها، سلاح‌ها، اخبار و چیت‌ها هم در همان فایل با ساختار مشابه تعریف شده‌اند.
+نقشه، شخصیت‌ها، سلاح‌ها، اخبار و چیت‌ها هم در همان فایل با ساختار مشابه تعریف شده‌اند. برای افزودن منبع جدید به صفحه‌ی منابع، یک آیتم به دسته‌ی مناسب در `resources.js` اضافه کنید:
+
+```js
+{ name: "Tool", fa: "نام فارسی", desc: "توضیح کوتاه",
+  url: "https://example.com", license: "MIT · رایگان", tag: "free" } // یا tag: "freemium"
+```
 
 ## ⚠️ سلب مسئولیت
 
