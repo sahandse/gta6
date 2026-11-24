@@ -231,10 +231,101 @@
     let startY = 0;
     let baseX = 0;
     let baseY = 0;
+    const markerLayer = $("[data-map-marker-layer]");
+    const locationList = $("[data-map-location-list]");
+    const locationSearch = $("[data-map-location-search]");
+    const locationCount = $("[data-map-location-count]");
+    const locationFilters = $("[data-map-region]");
+    let activeRegion = "all";
+    let activeLocation = null;
+    const locations = Array.isArray(window.GTA6 && GTA6.locations) ? GTA6.locations : [];
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const locationMatches = (place, query) =>
+      !query || norm([place.name, place.region, place.desc].join(" ")).includes(query);
+
+    const fitMarkerLayer = () => {
+      if (!markerLayer || !mapImage.naturalWidth || !mapImage.naturalHeight) return;
+      const rect = mapViewport.getBoundingClientRect();
+      const fit = Math.min(rect.width / mapImage.naturalWidth, rect.height / mapImage.naturalHeight);
+      markerLayer.style.width = (mapImage.naturalWidth * fit) + "px";
+      markerLayer.style.height = (mapImage.naturalHeight * fit) + "px";
+      markerLayer.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
+    };
+
+    const selectLocation = (place) => {
+      activeLocation = place.name;
+      if (markerLayer) {
+        markerLayer.querySelectorAll(".map-location-marker").forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.locationName === place.name));
+        });
+      }
+      if (locationList) {
+        locationList.querySelectorAll(".map-location-card").forEach((button) => {
+          button.classList.toggle("selected", button.dataset.locationName === place.name);
+        });
+      }
+    };
+
+    const renderLocations = () => {
+      if (!markerLayer || !locationList) return;
+      const query = norm(locationSearch ? locationSearch.value : "");
+      const filtered = locations.filter((place) =>
+        (activeRegion === "all" || place.region === activeRegion) && locationMatches(place, query)
+      );
+      markerLayer.innerHTML = "";
+      locationList.innerHTML = "";
+      filtered.forEach((place, index) => {
+        const marker = document.createElement("button");
+        marker.type = "button";
+        marker.className = "map-location-marker";
+        marker.style.left = clamp(Number(place.x) || 50, 0, 100) + "%";
+        marker.style.top = clamp(Number(place.y) || 50, 0, 100) + "%";
+        marker.textContent = place.icon || String(index + 1);
+        marker.title = place.name;
+        marker.dataset.locationName = place.name;
+        marker.setAttribute("aria-label", "نمایش " + place.name);
+        marker.setAttribute("aria-pressed", String(activeLocation === place.name));
+        marker.addEventListener("click", (event) => {
+          event.stopPropagation();
+          selectLocation(place);
+          if (locationSearch) locationSearch.value = "";
+        });
+        markerLayer.appendChild(marker);
+
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "map-location-card" + (activeLocation === place.name ? " selected" : "");
+        card.dataset.locationName = place.name;
+        card.innerHTML = `<span class="map-place-icon">${place.icon || "📍"}</span><span><strong>${place.name}</strong><small>${place.region} · ${place.desc}</small></span>`;
+        card.addEventListener("click", () => {
+          selectLocation(place);
+          const factor = 2.2;
+          scale = Math.max(scale, factor);
+          const rect = mapViewport.getBoundingClientRect();
+          const px = (Number(place.x) / 100 - 0.5) * markerLayer.offsetWidth * scale;
+          const py = (Number(place.y) / 100 - 0.5) * markerLayer.offsetHeight * scale;
+          offsetX = -px;
+          offsetY = -py;
+          render();
+        });
+        locationList.appendChild(card);
+      });
+      if (locationCount) locationCount.textContent = filtered.length.toLocaleString("fa-IR") + " مکان";
+      fitMarkerLayer();
+    };
+
+    locationFilters.forEach((button) => button.addEventListener("click", () => {
+      locationFilters.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      activeRegion = button.dataset.mapRegion;
+      renderLocations();
+    }));
+    if (locationSearch) locationSearch.addEventListener("input", renderLocations);
+    renderLocations();
     const render = () => {
       mapImage.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
+      fitMarkerLayer();
       if (zoomLabel) zoomLabel.textContent = `بزرگ‌نمایی: ${Math.round(scale * 100).toLocaleString("fa-IR")}٪`;
     };
     const zoomAt = (next, clientX, clientY) => {
@@ -290,7 +381,8 @@
     };
     mapViewport.addEventListener("pointerup", stopDrag);
     mapViewport.addEventListener("pointercancel", stopDrag);
-    mapImage.addEventListener("load", render);
+    mapImage.addEventListener("load", () => { renderLocations(); render(); });
+    window.addEventListener("resize", fitMarkerLayer);
     render();
   }
 
