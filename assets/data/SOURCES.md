@@ -21,5 +21,5 @@
 ## Changes made in GTA VI HUB
 - Persian category labels and local search/filter interface.
 - Kept source IDs, names, map positions, areas, real-world analogues and confidence labels from the upstream named-place dataset.
-- Excluded 8 entries in the source's fence category and 2 entries clearly named as bar/tavern venues.
+- Excluded 10 source records outside the scope of this general place directory.
 - Community map positions and district outlines are approximate and are not official Rockstar coordinates or boundaries.
