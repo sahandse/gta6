@@ -18,7 +18,7 @@
 .map-zoom-label{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .official-map-viewport{position:relative;height:min(78vh,900px);min-height:440px;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#10151b;touch-action:none;cursor:grab}
 .official-map-viewport.dragging{cursor:grabbing}
-.official-map-image{position:absolute;top:50%;left:50%;width:auto;height:auto;max-width:none;max-height:none;transform:translate(-50%,-50%) scale(1);transform-origin:center;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.official-map-image{position:absolute;top:50%;left:50%;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;transform:translate(-50%,-50%) scale(1);transform-origin:center;user-select:none;-webkit-user-drag:none;pointer-events:none}
 .map-attribution{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:12px}
 .map-attribution a{color:var(--cyan)}
 .map-intro{max-width:780px}
