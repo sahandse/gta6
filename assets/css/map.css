@@ -96,3 +96,10 @@ body.map-light .map-search-label input,body.map-light .map-admin-form input,body
 .leaflet-control-layers label{font-size:11px}
 body.map-light .leaflet-popup-content-wrapper,body.map-light .leaflet-popup-tip{background:#fff;color:#241a25}
 @media(max-width:720px){.map-viewport{height:64vh;min-height:390px}.leaflet-map{min-height:390px}}
+
+.map-official-regions{display:flex;flex-wrap:wrap;gap:6px}
+.map-official-regions span{font-size:10px;padding:5px 8px;border:1px solid #37d69b55;border-radius:99px;color:#8ce7c4;background:#37d69b10}
+.map-pagination{grid-column:1/-1;display:flex;justify-content:center;align-items:center;gap:14px;padding:14px;font-size:11px;color:var(--muted)}
+.map-pagination button{border:1px solid var(--line);border-radius:8px;background:#ffffff08;color:var(--ink);padding:7px 12px;font:inherit;cursor:pointer}
+.map-pagination button:disabled{opacity:.35;cursor:not-allowed}
+.map-selected-content .map-card-actions{align-self:center}
