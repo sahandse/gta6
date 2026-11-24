@@ -116,9 +116,16 @@
           const card = document.createElement("article");
           card.className = "card vehicle-card reveal in";
           card.style.animationDelay = i * 30 + "ms";
+          const vehicleImage = v.cls === "Motorcycle"
+            ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_DINKA_ENDURO_01.0g8d9j2v7n3x.jpg?akim=1&imdensity=1&imwidth=1200"
+            : v.cls === "Boat"
+              ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SHITZU_SQUALO_01.0p4w8j6k2m1a.jpg?akim=1&imdensity=1&imwidth=1200"
+              : v.cls === "Off-road"
+                ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_BUGGY_01.0jxfiql~371ik.jpg?akim=1&imdensity=1&imwidth=1200"
+                : "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=1600";
           card.innerHTML = `
-            <div class="card-media" style="background:${grad(v.color)}">
-              <span class="glyph">${v.maker.slice(0, 3).toUpperCase()}</span>
+            <div class="card-media">
+              <img src="${vehicleImage}" alt="تصویر رسمی وسایل نقلیه در GTA VI" loading="lazy">
               <span class="media-badge">${v.cls}</span>
             </div>
             <div class="card-body">
@@ -183,9 +190,18 @@
     GTA6.characters.forEach((c) => {
       const card = document.createElement("article");
       card.className = "card char-card reveal in";
+      const portraits: Record<string, string> = {
+        "Lucia Caminos": "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg?akim=1&imdensity=1&imwidth=1200",
+        "Jason Duval": "https://www.rockstargames.com/VI/_next/static/media/Jason_Duval_07.0ca326xbl~oyh.jpg?akim=1&imdensity=1&imwidth=1200",
+        "Boobie": "https://www.rockstargames.com/VI/_next/static/media/Boobie_Ike_01.0-wji2pg5anfs.jpg?akim=1&imdensity=1&imwidth=1200",
+        "Dre'Quan Priest": "https://www.rockstargames.com/VI/_next/static/media/DreQuan_Priest_01.0_0~wi-ipdj35.jpg?akim=1&imdensity=1&imwidth=1200",
+        "Cal Hampton": "https://www.rockstargames.com/VI/_next/static/media/Cal_Hampton_01.0xlil231_osh4.jpg?akim=1&imdensity=1&imwidth=1200",
+        "Raul Bautista": "https://www.rockstargames.com/VI/_next/static/media/Raul_Bautista_01.0md1ii-yrn96r.jpg?akim=1&imdensity=1&imwidth=1200"
+      };
+      const portrait = portraits[c.name];
       card.innerHTML = `
-        <div class="card-media" style="background:${grad(c.color)}">
-          <span class="glyph">${c.initials}</span>
+        <div class="card-media">
+          <img src="${portrait || "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=1200"}" alt="تصویر رسمی شخصیت ${c.name} در GTA VI" loading="lazy">
         </div>
         <div class="card-body">
           <span class="role">${c.role}</span>
