@@ -131,3 +131,5 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
  .article-row{grid-template-columns:92px minmax(0,1fr)}
  .article-row .thumb{width:92px;height:82px}
 }
+
+.footer-grid ul li a{display:flex;align-items:center;gap:9px}.footer-grid ul li a .nav-thumb{width:34px;height:24px;flex-basis:34px;border-radius:5px}.footer-grid ul li a:hover .nav-thumb{transform:scale(1.05)}
