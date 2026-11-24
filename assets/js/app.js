@@ -190,7 +190,7 @@
     GTA6.characters.forEach((c) => {
       const card = document.createElement("article");
       card.className = "card char-card reveal in";
-      const portraits: Record<string, string> = {
+      const portraits = {
         "Lucia Caminos": "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg?akim=1&imdensity=1&imwidth=1200",
         "Jason Duval": "https://www.rockstargames.com/VI/_next/static/media/Jason_Duval_07.0ca326xbl~oyh.jpg?akim=1&imdensity=1&imwidth=1200",
         "Boobie": "https://www.rockstargames.com/VI/_next/static/media/Boobie_Ike_01.0-wji2pg5anfs.jpg?akim=1&imdensity=1&imwidth=1200",
