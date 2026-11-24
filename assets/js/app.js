@@ -238,7 +238,7 @@
     const locationFilters = $("[data-map-region]");
     let activeRegion = "all";
     let activeLocation = null;
-    const locations = Array.isArray(window.GTA6 && GTA6.locations) ? GTA6.locations : [];
+    const locations = typeof GTA6 !== "undefined" && Array.isArray(GTA6.locations) ? GTA6.locations : [];
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
     const locationMatches = (place, query) =>
