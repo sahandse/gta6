@@ -117,9 +117,9 @@
           card.className = "card vehicle-card reveal in";
           card.style.animationDelay = i * 30 + "ms";
           const vehicleImage = v.cls === "Motorcycle"
-            ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_DINKA_ENDURO_01.0g8d9j2v7n3x.jpg?akim=1&imdensity=1&imwidth=1200"
+            ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.0-2n5rm9n8.rq.jpg?akim=1&imdensity=1&imwidth=1200"
             : v.cls === "Boat"
-              ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SHITZU_SQUALO_01.0p4w8j6k2m1a.jpg?akim=1&imdensity=1&imwidth=1200"
+              ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SQUALO_01.0cim7hj58ypb1.jpg?akim=1&imdensity=1&imwidth=1200"
               : v.cls === "Off-road"
                 ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_BUGGY_01.0jxfiql~371ik.jpg?akim=1&imdensity=1&imwidth=1200"
                 : "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=1600";
