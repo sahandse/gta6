@@ -1,31 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>نقشه تعاملی لئونیدا — GTA VI HUB</title>
-<meta name="description" content="نقشه تعاملی GTA VI؛ جست‌وجو، دسته‌بندی، ذخیره و مدیریت مکان‌های لئونیدا." />
-<meta name="theme-color" content="#07060d" />
-<link rel="stylesheet" href="assets/css/modern.css" />
-<link rel="stylesheet" href="assets/css/style.css" />
-<link rel="stylesheet" href="assets/css/gta-vi-theme.css" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322e0ff'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='%23061018' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-<link rel="stylesheet" href="assets/css/map.css" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0a0d">
+  <meta name="description" content="نقشه تعاملی GTA VI؛ جست‌وجو، دسته‌بندی، ذخیره و مدیریت مکان‌های لئونیدا.">
+  <title>نقشه تعاملی لئونیدا — GTA VI HUB</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="نقشه تعاملی لئونیدا — GTA VI HUB">
+  <meta property="og:description" content="بیش از هزار مکان نام‌گذاری‌شده روی نقشه جامعه‌محور Leonida.">
+  <meta property="og:image" content="./og-cover.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322e0ff'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='%23061018' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="map">
-<header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="index.html" aria-label="GTA VI HUB"><span class="mark">VI</span><span>GTA<span class="v6">6</span> HUB</span></a>
-    <nav class="main-nav" id="mainnav" aria-label="ناوبری اصلی">
-      <a href="index.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>خانه</span></a><a href="vehicles.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>وسایل نقلیه</span></a><a href="map.html" class="active"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Leonida_Map_Poster.08ir77j-.26ny.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>نقشه لئونیدا</span></a><a href="characters.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>شخصیت‌ها</span></a><a href="news.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Vice_City_13.0iq8ff474tsdx.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>اخبار</span></a><a href="resources.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Grassrivers_01.1096rw4lbjur_.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>منابع</span></a>
-    </nav>
-    <div class="header-actions"><label class="search-box"><input type="search" placeholder="جست‌وجو…" aria-label="جست‌وجو" data-global-search /></label><button class="nav-toggle" aria-label="منو" aria-expanded="false" aria-controls="mainnav">☰</button></div>
-  </div>
-</header>
+<!-- @header -->
 <main class="map-app">
   <section class="map-hero wrap">
     <div>
@@ -94,7 +85,6 @@
             </div>
           </div>
           <div class="map-viewport" data-map-viewport>
-            
             <div id="leonida-map" class="leaflet-map" role="application" aria-label="نقشه تعاملی مکان‌های GTA VI"></div>
           </div>
           <div class="map-selected-card" data-map-selected-card>
@@ -167,11 +157,7 @@
     <p class="map-data-credit">Map data from Open GTA 6 Map (fbritoferreira), CC BY 4.0 · Adapted for GTA VI HUB.</p>
   </section>
 </main>
-<footer class="site-footer"><div class="wrap"><div class="footer-bottom"><span>© <span data-year>2026</span> GTA VI HUB — پروژه هواداری مستقل</span><span>Grand Theft Auto و دارایی‌های آن متعلق به Rockstar Games است.</span></div></div></footer>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="assets/js/map.js"></script>
+<!-- @footer -->
+<script type="module" src="/src/main.ts"></script>
 </body>
 </html>

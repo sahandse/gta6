@@ -1,0 +1,205 @@
+/* ============================================================
+   GTA VI HUB — page extras (home collections, media fixes)
+   ============================================================ */
+
+/* Compact collection cards used on the home page */
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #16131a;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.mini-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 140, 171, 0.55);
+  box-shadow: 0 16px 36px #0006;
+}
+
+.mini-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #211a20;
+}
+
+.mini-media--portrait {
+  aspect-ratio: 4 / 3.4;
+}
+
+.mini-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.mini-media--portrait img {
+  object-position: center 18%;
+}
+
+.mini-card:hover .mini-media img {
+  transform: scale(1.06);
+}
+
+.mini-copy {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px 14px;
+}
+
+.mini-copy strong {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: #fff;
+}
+
+.mini-copy small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.mini-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mini-stats > span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: #cdbfc3;
+}
+
+/* Page-level section rhythm */
+.home-stack {
+  display: grid;
+  gap: 0;
+}
+
+.section .mini-grid {
+  margin-top: 4px;
+}
+
+/* Card media fallbacks when the legacy sheet is not specific */
+.vehicle-card .card-media {
+  aspect-ratio: 16 / 10;
+}
+
+.vehicle-card .card-media img,
+.weapon-card .card-media img,
+.char-card .card-media img {
+  display: block;
+}
+
+/* Article rows keep images contained on small screens */
+.article-row .thumb {
+  flex: 0 0 180px;
+  width: 180px;
+  height: 118px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.article-row .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Resource media: keep official art as a small band, not a huge hero */
+.res-card .res-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.res-card .res-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.res-section-icon {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.res-section-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Map canvas needs an explicit height inside the shell */
+.leaflet-map,
+#leonida-map {
+  width: 100%;
+  min-height: 560px;
+  height: 100%;
+}
+
+.map-viewport {
+  position: relative;
+  min-height: 560px;
+}
+
+/* Small typographic accents */
+.kicker {
+  color: var(--pink-soft);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+}
+
+.result-count {
+  color: var(--muted);
+}
+
+/* Responsive collections */
+@media (max-width: 1040px) {
+  .mini-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-row {
+    flex-direction: column;
+  }
+
+  .article-row .thumb {
+    flex-basis: auto;
+    width: 100%;
+    height: 170px;
+  }
+
+  .leaflet-map,
+  #leonida-map,
+  .map-viewport {
+    min-height: 430px;
+  }
+}

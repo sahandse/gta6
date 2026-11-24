@@ -1,57 +1,32 @@
-type HubItem = { title: string; subtitle: string; href: string; image: string; tag: string };
-const officialMedia = {
-  hero: "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=2400",
-  viceCity: "https://www.rockstargames.com/VI/_next/static/media/Vice_City_13.0iq8ff474tsdx.jpg?akim=1&imdensity=1&imwidth=1400",
-  lucia: "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg?akim=1&imdensity=1&imwidth=1200",
-  keys: "https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_01.0zgz7tveur6y8.jpg?akim=1&imdensity=1&imwidth=1200"
-};
-const sections: HubItem[] = [
-  { title: "نقشه لئونیدا", subtitle: "شهرها، جزیره‌ها و مناطق دیدنی", href: "map.html", image: officialMedia.keys, tag: "EXPLORE" },
-  { title: "شخصیت‌ها", subtitle: "قهرمانان و چهره‌های دنیای بازی", href: "characters.html", image: officialMedia.lucia, tag: "PEOPLE" },
-  { title: "وسایل نقلیه", subtitle: "گاراژ و وسایل نقلیه لئونیدا", href: "vehicles.html", image: officialMedia.viceCity, tag: "GARAGE" },
-  { title: "اخبار و رسانه", subtitle: "تصاویر و خبرهای منتشرشده", href: "news.html", image: officialMedia.hero, tag: "MEDIA" },
-  { title: "Grassrivers", subtitle: "تالاب‌ها و طبیعت وحشی لئونیدا", href: "map.html", image: "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_01.1096rw4lbjur_.jpg?akim=1&imdensity=1&imwidth=1400", tag: "WILDLIFE" },
-  { title: "Port Gellhorn", subtitle: "بندر و ساحل غربی لئونیدا", href: "map.html", image: "https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_01.0fmisvza-5-cq.jpg?akim=1&imdensity=1&imwidth=1400", tag: "COAST" }
-];
-const $ = <T extends HTMLElement>(selector: string): T | null => document.querySelector<T>(selector);
-const htmlEntities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-const escapeHTML = (value: string): string => value.replace(/[&<>"']/g, char => htmlEntities[char] ?? char);
-function renderSections(): void {
-  const grid = $<HTMLElement>("#hub-sections");
-  if (!grid) return;
-  grid.innerHTML = sections.map(item => `
-    <a class="feature-card" href="${item.href}" data-search="${escapeHTML(item.title + " " + item.subtitle)}">
-      <img src="${item.image}" alt="${escapeHTML(item.title)}" loading="lazy">
-      <span class="feature-shade"></span><span class="feature-tag">${item.tag}</span>
-      <span class="feature-copy"><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.subtitle)}</small></span>
-      <span class="feature-arrow" aria-hidden="true">↗</span>
-    </a>`).join("");
+import "./styles/site.css";
+
+import { initCharacters } from "./features/characters";
+import { initCheats } from "./features/cheats";
+import { initHome } from "./features/home";
+import { initNewsPage, initNewsPreview } from "./features/news";
+import { initResources } from "./features/resources";
+import { initUI } from "./features/ui";
+import { initVehicles } from "./features/vehicles";
+import { initWeapons } from "./features/weapons";
+
+function bootstrap(): void {
+  initUI();
+  initHome();
+  initVehicles();
+  initCharacters();
+  initWeapons();
+  initNewsPreview();
+  initNewsPage();
+  initCheats();
+  initResources();
+
+  if (document.querySelector("#leonida-map")) {
+    void import("./features/map").then((module) => module.initMapPage());
+  }
 }
-function initSearch(): void {
-  const input = $<HTMLInputElement>("[data-hub-search]");
-  const cards = (): HTMLElement[] => Array.from(document.querySelectorAll<HTMLElement>(".feature-card"));
-  input?.addEventListener("input", () => {
-    const query = (input.value || "").trim().toLocaleLowerCase("fa");
-    cards().forEach(card => { card.hidden = !card.dataset.search?.toLocaleLowerCase("fa").includes(query); });
-  });
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrap, { once: true });
+} else {
+  bootstrap();
 }
-function initNavigation(): void {
-  const toggle = $<HTMLButtonElement>(".menu-toggle");
-  const nav = $<HTMLElement>(".nav-links");
-  toggle?.addEventListener("click", () => {
-    const opened = nav?.classList.toggle("is-open") ?? false;
-    toggle.setAttribute("aria-expanded", String(opened));
-  });
-}
-function initReveal(): void {
-  const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
-  if (!("IntersectionObserver" in window)) { items.forEach(item => item.classList.add("is-visible")); return; }
-  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
-  }), { threshold: 0.12 });
-  items.forEach(item => observer.observe(item));
-}
-document.addEventListener("DOMContentLoaded", () => {
-  renderSections(); initSearch(); initNavigation(); initReveal();
-  const year = $<HTMLElement>("[data-year]"); if (year) year.textContent = String(new Date().getFullYear());
-});
