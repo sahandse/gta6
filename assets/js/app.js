@@ -201,67 +201,80 @@
     });
   }
 
-  /* ---------------- map ---------------- */
-  const mapStage = $("[data-map-stage]");
-  if (mapStage) {
-    const side = $("[data-map-list]");
-    const regionPills = $$("[data-region]");
-    let region = "همه";
+  /* ---------------- official Leonida map viewer ---------------- */
+  const mapViewport = $("[data-official-map-viewport]");
+  const mapImage = $("[data-official-map-image]");
+  if (mapViewport && mapImage) {
+    const zoomLabel = $("[data-map-zoom-label]");
+    let scale = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    let pointer = null;
+    let startX = 0;
+    let startY = 0;
+    let baseX = 0;
+    let baseY = 0;
 
-    function renderMap() {
-      mapStage.querySelectorAll(".map-pin").forEach((n) => n.remove());
-      side.innerHTML = "";
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const render = () => {
+      mapImage.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${scale})`;
+      if (zoomLabel) zoomLabel.textContent = `بزرگ‌نمایی: ${Math.round(scale * 100).toLocaleString("fa-IR")}٪`;
+    };
+    const zoomAt = (next, clientX, clientY) => {
+      const rect = mapViewport.getBoundingClientRect();
+      const cx = clientX == null ? rect.left + rect.width / 2 : clientX;
+      const cy = clientY == null ? rect.top + rect.height / 2 : clientY;
+      const localX = cx - rect.left - rect.width / 2;
+      const localY = cy - rect.top - rect.height / 2;
+      const nextScale = clamp(next, 1, 5);
+      const ratio = nextScale / scale;
+      offsetX = localX - (localX - offsetX) * ratio;
+      offsetY = localY - (localY - offsetY) * ratio;
+      scale = nextScale;
+      render();
+    };
 
-      const list = GTA6.locations.filter((l) => region === "همه" || l.region === region);
+    $$("[data-map-zoom]").forEach((button) => {
+      button.addEventListener("click", () => zoomAt(scale + (button.dataset.mapZoom === "in" ? 0.25 : -0.25)));
+    });
+    const reset = $("[data-map-reset]");
+    if (reset) reset.addEventListener("click", () => {
+      scale = 1;
+      offsetX = 0;
+      offsetY = 0;
+      render();
+    });
 
-      list.forEach((loc, i) => {
-        const pin = document.createElement("button");
-        pin.className = "map-pin";
-        pin.style.left = loc.x + "%";
-        pin.style.top = loc.y + "%";
-        pin.style.setProperty("--pin", i % 2 ? "#22e0ff" : "#ff2d95");
-        pin.innerHTML = `<span class="pin-ico">${loc.icon}</span><span class="tip">${loc.name}</span>`;
-        pin.addEventListener("click", () => {
-          $$(".map-pin", mapStage).forEach((p) => p.classList.remove("active"));
-          $$(".location-card", side).forEach((c) => c.classList.remove("active"));
-          pin.classList.add("active");
-          const card = side.querySelector(`[data-loc="${i}"]`);
-          if (card) card.classList.add("active");
-        });
-        mapStage.appendChild(pin);
+    mapViewport.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      zoomAt(scale + (event.deltaY < 0 ? 0.18 : -0.18), event.clientX, event.clientY);
+    }, { passive: false });
 
-        const card = document.createElement("button");
-        card.className = "location-card";
-        card.dataset.loc = i;
-        card.innerHTML = `
-          <span class="region">${loc.region}</span>
-          <h4>${loc.icon} ${loc.name}</h4>
-          <p>${loc.desc}</p>`;
-        card.addEventListener("click", () => {
-          $$(".location-card", side).forEach((c) => c.classList.remove("active"));
-          $$(".map-pin", mapStage).forEach((p) => p.classList.remove("active"));
-          card.classList.add("active");
-          const pins = $$(".map-pin", mapStage);
-          const target = pins[i];
-          if (target) {
-            target.classList.add("active");
-            target.scrollIntoView({ block: "nearest", inline: "nearest" });
-          }
-        });
-        side.appendChild(card);
-      });
-    }
-
-    regionPills.forEach((p) =>
-      p.addEventListener("click", () => {
-        regionPills.forEach((x) => x.classList.remove("active"));
-        p.classList.add("active");
-        region = p.dataset.region;
-        renderMap();
-      })
-    );
-
-    renderMap();
+    mapViewport.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      pointer = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+      baseX = offsetX;
+      baseY = offsetY;
+      mapViewport.classList.add("dragging");
+      mapViewport.setPointerCapture(event.pointerId);
+    });
+    mapViewport.addEventListener("pointermove", (event) => {
+      if (pointer !== event.pointerId) return;
+      offsetX = baseX + event.clientX - startX;
+      offsetY = baseY + event.clientY - startY;
+      render();
+    });
+    const stopDrag = (event) => {
+      if (pointer !== event.pointerId) return;
+      pointer = null;
+      mapViewport.classList.remove("dragging");
+    };
+    mapViewport.addEventListener("pointerup", stopDrag);
+    mapViewport.addEventListener("pointercancel", stopDrag);
+    mapImage.addEventListener("load", render);
+    render();
   }
 
   /* ---------------- news ---------------- */
