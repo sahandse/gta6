@@ -116,13 +116,14 @@
           const card = document.createElement("article");
           card.className = "card vehicle-card reveal in";
           card.style.animationDelay = i * 30 + "ms";
-          const vehicleImage = v.cls === "Motorcycle"
-            ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.0-2n5rm9n8.rq.jpg?akim=1&imdensity=1&imwidth=1200"
-            : v.cls === "Boat"
-              ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SQUALO_01.0cim7hj58ypb1.jpg?akim=1&imdensity=1&imwidth=1200"
-              : v.cls === "Off-road"
-                ? "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_BUGGY_01.0jxfiql~371ik.jpg?akim=1&imdensity=1&imwidth=1200"
-                : "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=1600";
+          const vehicleGallery = [
+            "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_GROTTI_CHEETAH_01.0a.wy3s_ogjey.jpg?akim=1&imdensity=1&imwidth=1400",
+            "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=1400",
+            "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.0-2n5rm9n8.rq.jpg?akim=1&imdensity=1&imwidth=1400",
+            "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SQUALO_01.0cim7hj58ypb1.jpg?akim=1&imdensity=1&imwidth=1400",
+            "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_VAPID_BUGGY_01.0jxfiql~371ik.jpg?akim=1&imdensity=1&imwidth=1400"
+          ];
+          const vehicleImage = vehicleGallery[i % vehicleGallery.length];
           card.innerHTML = `
             <div class="card-media">
               <img src="${vehicleImage}" alt="تصویر رسمی وسایل نقلیه در GTA VI" loading="lazy">
@@ -310,13 +311,21 @@
           <div class="meta">${first.date} · ${first.read} مطالعه</div>
         </div>`;
     }
+    const newsImages = [
+      "https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_01.0zgz7tveur6y8.jpg?akim=1&imdensity=1&imwidth=1000",
+      "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_GROTTI_CHEETAH_01.0a.wy3s_ogjey.jpg?akim=1&imdensity=1&imwidth=1000",
+      "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=1000",
+      "https://www.rockstargames.com/VI/_next/static/media/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01.0wv6pw3t-mky3.jpg?akim=1&imdensity=1&imwidth=1000",
+      "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_01.1096rw4lbjur_.jpg?akim=1&imdensity=1&imwidth=1000",
+      "https://www.rockstargames.com/VI/_next/static/media/Vice_City_13.0iq8ff474tsdx.jpg?akim=1&imdensity=1&imwidth=1000"
+    ];
     if (listEl) {
       listEl.innerHTML = rest
         .slice(0, 4)
         .map(
-          (n) => `
+          (n, index) => `
         <a class="news-item" href="#">
-          <span class="news-thumb" style="background:${grad(n.color)}">${n.glyph}</span>
+          <span class="news-thumb"><img src="${newsImages[index + 1]}" alt="" loading="lazy"></span>
           <span class="news-text">
             <span class="news-cat">${n.cat} · ${n.date}</span>
             <h4>${n.title}</h4>
@@ -343,9 +352,9 @@
       newsFull.innerHTML = list.length
         ? list
             .map(
-              (n) => `
+              (n, index) => `
         <a class="article-row reveal in" href="#">
-          <span class="thumb" style="background:${grad(n.color)}">${n.glyph}</span>
+          <span class="thumb"><img src="${newsImages[GTA6.news.indexOf(n) % newsImages.length]}" alt="" loading="lazy"></span>
           <span>
             <span class="meta">${n.cat} · ${n.date} · ${n.read} مطالعه</span>
             <h3>${n.title}</h3>
@@ -458,9 +467,17 @@
         const section = document.createElement("section");
         section.className = "resource-section reveal in";
         section.id = c.id;
+        const resourceImages = {
+          motion: "https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=1000",
+          art: "https://www.rockstargames.com/VI/_next/static/media/Lucia_Caminos_01.0a7yqvewctkfp.jpg?akim=1&imdensity=1&imwidth=1000",
+          landing: "https://www.rockstargames.com/VI/_next/static/media/Vice_City_13.0iq8ff474tsdx.jpg?akim=1&imdensity=1&imwidth=1000",
+          designmd: "https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_01.0zgz7tveur6y8.jpg?akim=1&imdensity=1&imwidth=1000",
+          inspiration: "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_01.1096rw4lbjur_.jpg?akim=1&imdensity=1&imwidth=1000",
+          premium: "https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_01.0fmisvza-5-cq.jpg?akim=1&imdensity=1&imwidth=1000"
+        };
         section.innerHTML = `
           <div class="res-section-head">
-            <span class="res-section-icon" style="background:${grad(c.color)}">${c.icon}</span>
+            <span class="res-section-icon"><img src="${resourceImages[c.id] || resourceImages.motion}" alt="" loading="lazy"></span>
             <div>
               <h2>${c.title}</h2>
               <span class="res-section-count">${items.length.toLocaleString("fa-IR")} مورد</span>
@@ -471,6 +488,7 @@
               .map(
                 (it) => `
               <a class="res-card" href="${it.url}" target="_blank" rel="noopener noreferrer">
+                <div class="res-media"><img src="${resourceImages[c.id] || resourceImages.motion}" alt="" loading="lazy"></div>
                 <div class="res-top">
                   <span class="res-name">${it.name}<small>${it.fa}</small></span>
                   <span class="res-badge ${it.tag}">${it.tag === "free" ? "رایگان" : "فریمیوم"}</span>
