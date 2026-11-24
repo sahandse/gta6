@@ -12,7 +12,8 @@ const sections: HubItem[] = [
   { title: "اخبار و رسانه", subtitle: "تصاویر و خبرهای منتشرشده", href: "news.html", image: officialMedia.hero, tag: "MEDIA" }
 ];
 const $ = <T extends HTMLElement>(selector: string): T | null => document.querySelector<T>(selector);
-const escapeHTML = (value: string): string => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char] ?? char));
+const htmlEntities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+const escapeHTML = (value: string): string => value.replace(/[&<>"']/g, char => htmlEntities[char] ?? char);
 function renderSections(): void {
   const grid = $<HTMLElement>("#hub-sections");
   if (!grid) return;
