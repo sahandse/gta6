@@ -76,7 +76,11 @@
             <span><i class="legend-official"></i> مکان‌های دیتابیس</span>
             <span><i class="legend-unverified"></i> موقعیت تقریبی</span>
           </div>
-          <div class="map-sidebar-foot">داده‌ها جامعه‌محورند؛ مختصات و مرزها تأیید رسمی Rockstar نیستند.</div>
+          <div class="map-sidebar-heading"><strong>مناطق رسمی معرفی‌شده</strong></div>
+          <div class="map-official-regions">
+            <span>Vice City</span><span>Leonida Keys</span><span>Port Gellhorn</span><span>Ambrosia</span><span>Grassrivers</span><span>Mount Kalaga National Park</span>
+          </div>
+          <div class="map-sidebar-foot">نام این شش منطقه در وب‌سایت Rockstar آمده است؛ موقعیت جزئی مکان‌ها از دیتابیس جامعه است.</div>
         </aside>
 
         <div class="map-main-area">
@@ -139,7 +143,7 @@
         <p>این ابزار بدون بک‌اند کار می‌کند. تغییرات جدید فقط در مرورگر فعلی ذخیره می‌شوند؛ برای انتشار عمومی، خروجی JSON را در مخزن GitHub جایگزین فایل دیتابیس کن. این بخش احراز هویت سروری ندارد و پنل امن چندکاربره محسوب نمی‌شود.</p>
         <form data-map-add-form class="map-admin-form">
           <label>نام مکان<input name="name" required maxlength="90" placeholder="نام انگلیسی یا فارسی"></label>
-          <label>منطقه<select name="region"><option>Vice City</option><option>Leonida</option></select></label>
+          <label>ناحیه<input name="region" maxlength="100" placeholder="نام ناحیه یا منطقه"></label>
           <label>دسته<select name="category"><option value="building">ساختمان و مکان شاخص</option><option value="shop">فروشگاه و خدمات</option><option value="hotel">هتل و اقامت</option><option value="food">رستوران و غذا</option><option value="transport">حمل‌ونقل</option><option value="civic">مراکز عمومی</option><option value="leisure">تفریح و ورزش</option><option value="nature">طبیعت</option><option value="safehouse">خانه امن</option></select></label>
           <label>مختصات افقی (%)<input name="x" type="number" min="0" max="100" value="50" required></label>
           <label>مختصات عمودی (%)<input name="y" type="number" min="0" max="100" value="50" required></label>
