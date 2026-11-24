@@ -126,10 +126,10 @@
     if(name==="database")renderDatabase();if(name==="progress")renderProgress();if(name==="explore")setTimeout(()=>map?.invalidateSize(),80);
   }
   function initMap(){
-    map=L.map(mapEl,{crs:L.CRS.Simple,minZoom:-1,maxZoom:7,zoomControl:true,preferCanvas:true,attributionControl:true});
+    map=L.map(mapEl,{crs:L.CRS.Simple,minZoom:0,maxZoom:7,zoomControl:true,preferCanvas:true,attributionControl:true});
     const bounds=[[-1024,0],[0,1024]];
-    const night=L.tileLayer(TILE_BASE+"/night/{z}/{z},{y},{x}.webp",{tileSize:256,minZoom:-1,maxNativeZoom:5,maxZoom:7,noWrap:true,bounds});
-    const day=L.tileLayer(TILE_BASE+"/day/{z}/{z},{y},{x}.webp",{tileSize:256,minZoom:-1,maxNativeZoom:5,maxZoom:7,noWrap:true,bounds});
+    const tileOptions={tileSize:256,minZoom:0,maxNativeZoom:5,maxZoom:7,noWrap:true,bounds,attribution:'Map data &copy; <a href="https://github.com/fbritoferreira/gta6" target="_blank" rel="noopener">Open GTA 6 Map</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>'};\n    const night=L.tileLayer(TILE_BASE+"/night/{z}/{z},{y},{x}.webp",tileOptions);
+    const day=L.tileLayer(TILE_BASE+"/day/{z}/{z},{y},{x}.webp",tileOptions);
     night.addTo(map);
     markerLayer=L.markerClusterGroup({maxClusterRadius:42,showCoverageOnHover:false,spiderfyOnMaxZoom:true,iconCreateFunction:clusterIcon});
     markerLayer.addTo(map);districtLayer=L.layerGroup().addTo(map);routeLayer=L.layerGroup().addTo(map);
@@ -159,7 +159,7 @@
   $("[data-map-db-search]")?.addEventListener("input",()=>{const e=$("[data-map-database]");if(e)e.dataset.page="0";renderDatabase()});
   $("[data-map-route]")?.addEventListener("click",renderRoute);
   $("[data-map-route-clear]")?.addEventListener("click",()=>{routeLayer?.clearLayers();if($("[data-map-route-from]"))$("[data-map-route-from]").value="";if($("[data-map-route-to]"))$("[data-map-route-to]").value=""});
-  $("[data-map-zoom]")?.addEventListener("click",()=>map?.zoomIn());$("[data-map-reset]")?.addEventListener("click",()=>map?.fitBounds([[-1024,0],[0,1024]]));
+  $("[data-map-reset]")?.addEventListener("click",()=>map?.fitBounds([[-1024,0],[0,1024]]));
   $$("[data-map-zoom]").forEach(b=>b.addEventListener("click",()=>map?.setZoom(map.getZoom()+(b.dataset.mapZoom==="in"?1:-1))));
   $("[data-map-fullscreen]")?.addEventListener("click",()=>{if(document.fullscreenElement)document.exitFullscreen?.();else viewport.requestFullscreen?.().then(()=>setTimeout(()=>map?.invalidateSize(),100))});
   $("[data-map-districts]")?.addEventListener("change",e=>renderDistricts(e.target.checked));
