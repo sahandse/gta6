@@ -64,3 +64,33 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:1050px){.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.main-nav{gap:0}.main-nav a{padding:8px 9px;font-size:11.5px}}
 @media(max-width:760px){.wrap{width:calc(100% - 30px)}.site-header .wrap{height:68px}.nav-toggle{display:block}.main-nav{display:none;position:absolute;top:68px;right:15px;left:15px;margin:0;padding:12px;background:#151216;border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.main-nav.open{display:flex}.main-nav a{padding:11px 13px;font-size:13px}.search-box{width:150px}.search-box:focus-within{width:150px}.page-head{padding:66px 0 38px!important}.page-head:before{opacity:.27}.card-grid{gap:11px}.card-body{padding:14px!important}.card-body h3{font-size:15px}.tile-grid{gap:9px}.tile{padding:15px!important}.footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-bottom{flex-direction:column}.map-layout{grid-template-columns:1fr!important}}
 @media(max-width:480px){.card-grid,.tile-grid{grid-template-columns:1fr}.card-media{aspect-ratio:16/9}.char-card .card-media{aspect-ratio:16/10}.toolbar{align-items:stretch}.toolbar .field{flex-basis:100%}.footer-grid{grid-template-columns:1fr 1fr}.search-box{width:125px}.page-head h1{font-size:34px!important}}
+
+/* Home-page navigation and editorial hero refinements */
+.nav-wrap{width:min(1320px,calc(100% - 44px));height:76px;margin:auto;display:flex;align-items:center;gap:30px}
+.nav-links{display:flex;align-items:center;gap:5px;color:#e9dfdc;font-size:12px}
+.nav-links a{padding:9px 11px;border-radius:9px;opacity:.86;transition:.2s}
+.nav-links a:hover{opacity:1;background:#ffffff10;color:#fff}
+.nav-tools{margin-inline-start:auto;display:flex;align-items:center;gap:10px}
+.search-wrap{display:flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--line);border-radius:30px;background:#ffffff0b}
+.search-wrap input{width:145px;border:0;outline:0;background:transparent;color:white;font-size:12px}
+.menu-toggle{display:none;background:#ffffff0b;border:1px solid var(--line);color:white;border-radius:9px;padding:8px 12px}
+.hero{min-height:760px!important;display:flex;align-items:flex-end!important;position:relative;isolation:isolate;overflow:hidden;background:#171216!important}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:url("https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=2400") center 35%/cover no-repeat;transform:scale(1.015)}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#0b0a0d 0%,#0b0a0dcf 15%,#0b0a0d22 65%,#0b0a0d66 100%),linear-gradient(90deg,#0b0a0d77,transparent 80%)}
+.hero-content{width:min(1320px,calc(100% - 44px));margin:0 auto;padding:170px 0 82px}
+.hero h1{font-size:clamp(46px,8vw,104px)!important;line-height:1.06!important;letter-spacing:-.05em!important}
+.hero h1 span{background:linear-gradient(90deg,#ff83a8,#f4b17b 70%,#fff0dc);background-clip:text;color:transparent}
+.hero p{max-width:560px;color:#eee1dc;font-size:15px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(110deg,#ff6b9a,#f3a36d)!important;color:#1b1014!important;box-shadow:0 10px 32px #ff6b9a30!important}
+.btn-outline{border:1px solid #ffffff66;background:#ffffff12;backdrop-filter:blur(10px)}
+.hero-meta{display:flex;gap:28px;margin-top:48px;color:#e7d9d4;font-size:10px;letter-spacing:.1em}
+.hero-meta strong{display:block;color:white;font-size:21px}
+.section{width:min(1320px,calc(100% - 44px));margin:0 auto;padding:72px 0}
+.section-heading h2{font-size:clamp(26px,4vw,40px)}
+.feature-card{border-radius:14px!important;border:1px solid var(--line)!important}
+.feature-card:after{background:linear-gradient(0deg,#0b0a0df2,transparent 75%),linear-gradient(180deg,#0b0a0d30,transparent 35%)}
+.official-note{background:#171519!important;border:1px solid var(--line)!important;border-radius:13px!important}
+.footer{background:#09080a!important}
+@media(max-width:1000px){.nav-wrap{gap:14px}.nav-links{gap:0}.nav-links a{padding:8px;font-size:11px}}
+@media(max-width:760px){.nav-wrap{height:68px;width:calc(100% - 30px)}.nav-links{display:none;position:absolute;top:68px;right:15px;left:15px;padding:14px;background:#151216;border:1px solid var(--line);border-radius:12px;flex-direction:column;align-items:stretch}.nav-links.is-open{display:flex}.nav-links a{font-size:13px;padding:11px}.menu-toggle{display:block}.search-wrap input{width:90px}.hero{min-height:690px!important}.hero-content{width:calc(100% - 32px);padding:145px 0 55px}.section{width:calc(100% - 30px);padding:56px 0}.hero-meta{gap:16px;margin-top:34px}}
