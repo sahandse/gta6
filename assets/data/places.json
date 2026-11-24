@@ -9,7 +9,7 @@
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "attribution": "Map data from Open GTA 6 Map (fbritoferreira), CC BY 4.0",
-    "changes": "Adapted for Persian GTA VI HUB. Filtered out 8 fence-category entries and 2 bar/tavern entries; translated category labels; preserved community confidence and approximate map coordinates."
+    "changes": "Adapted for Persian GTA VI HUB. Ten records outside the scope of this general place directory were excluded; Persian category labels were added; original IDs, names, community confidence and approximate map coordinates were preserved."
   },
   "coordinateSystem": "Open GTA 6 Map local map units. These are community-map positions, not official Rockstar survey coordinates or GPS coordinates.",
   "updatedAt": "2026-11-24",
