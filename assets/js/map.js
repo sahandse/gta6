@@ -11,6 +11,8 @@
   const norm=v=>String(v??"").toLocaleLowerCase("fa").replace(/[ي]/g,"ی").replace(/[ك]/g,"ک").trim();
   const format=n=>Number(n||0).toLocaleString("fa-IR");
   const categoryNames={hotel:"هتل و اقامت",safehouse:"خانه امن",shop:"فروشگاه و خدمات",building:"ساختمان و مکان شاخص",civic:"مراکز عمومی",food:"رستوران و غذا",transport:"حمل‌ونقل",leisure:"تفریح و ورزش",nature:"طبیعت"};
+  const confidenceLabels={community:"بازسازی جامعه",press:"گزارش رسانه‌ای",unverified:"تأییدنشده"};
+  const confidenceLabel=value=>confidenceLabels[value]||"بازسازی جامعه";
   const categoryColors={hotel:"#ff9b59",safehouse:"#ff4f9a",shop:"#ffd166",building:"#b8a1ff",civic:"#56cfe1",food:"#ff7b72",transport:"#8bd17c",leisure:"#f6bd60",nature:"#4ecdc4"};
   const categoryIcons={hotel:"🏨",safehouse:"🏠",shop:"🛍️",building:"🏛️",civic:"🏥",food:"🍽️",transport:"🚉",leisure:"🎡",nature:"🌿"};
   let places=[],districts=[],custom=[],favorites=new Set(safeRead(STORE.favorites,[])),visited=new Set(safeRead(STORE.visited,[]));
@@ -38,7 +40,7 @@
     return L.divIcon({html:'<span class="map-pin-cluster map-cluster-'+size+'">'+format(n)+'</span>',className:"",iconSize:size==="small"?[32,32]:size==="medium"?[40,40]:[48,48]});
   }
   function popupContent(p){
-    return '<div class="map-popup-title">'+esc(p.name)+'</div><div class="map-popup-meta">'+esc(areaLabel(p))+' · '+esc(categoryNames[p.kind]||p.kind)+' · '+esc(p.confidence||"community")+'</div>'+
+    return '<div class="map-popup-title">'+esc(p.name)+'</div><div class="map-popup-meta">'+esc(areaLabel(p))+' · '+esc(categoryNames[p.kind]||p.kind)+' · '+esc(confidenceLabel(p.confidence))+'</div>'+
       (p.real_life?'<div class="map-popup-desc">نمونه واقعی الهام‌بخش: '+esc(p.real_life)+'</div>':"")+
       '<div class="map-popup-desc">مختصات جامعه‌محور: '+format(p.x)+'، '+format(p.y)+'</div>';
   }
@@ -64,7 +66,7 @@
   function renderSelected(){
     const p=get(selected);if(!selectedCard)return;
     if(!p){selectedCard.innerHTML='<div class="map-selected-empty">برای مشاهده جزئیات، یک نشانگر یا مکان از فهرست را انتخاب کن.</div>';return}
-    selectedCard.innerHTML='<div class="map-selected-content"><div class="map-selected-placeholder">'+(categoryIcons[p.kind]||"📍")+'</div><div><h3>'+esc(p.name)+'</h3><p>'+esc(areaLabel(p))+' · '+esc(categoryNames[p.kind]||p.kind)+'</p>'+(p.real_life?'<p>نمونه واقعی الهام‌بخش: '+esc(p.real_life)+'</p>':"")+'<span class="map-status-pill '+(p.confidence==="unverified"?"unverified":"")+'">'+esc(p.confidence||"community")+' · موقعیت جامعه‌محور</span></div><div class="map-card-actions"><button type="button" data-map-favorite>'+ (favorites.has(p.id)?"★ ذخیره‌شده":"☆ علاقه‌مندی")+'</button><button type="button" data-map-visited>'+(visited.has(p.id)?"✓ بازدید شد":"علامت بازدید")+'</button></div></div>';
+    selectedCard.innerHTML='<div class="map-selected-content"><div class="map-selected-placeholder">'+(categoryIcons[p.kind]||"📍")+'</div><div><h3>'+esc(p.name)+'</h3><p>'+esc(areaLabel(p))+' · '+esc(categoryNames[p.kind]||p.kind)+'</p>'+(p.real_life?'<p>نمونه واقعی الهام‌بخش: '+esc(p.real_life)+'</p>':"")+'<span class="map-status-pill '+(p.confidence==="unverified"?"unverified":"")+'">'+esc(confidenceLabel(p.confidence))+' · موقعیت جامعه‌محور</span></div><div class="map-card-actions"><button type="button" data-map-favorite>'+ (favorites.has(p.id)?"★ ذخیره‌شده":"☆ علاقه‌مندی")+'</button><button type="button" data-map-visited>'+(visited.has(p.id)?"✓ بازدید شد":"علامت بازدید")+'</button></div></div>';
     $("[data-map-favorite]")?.addEventListener("click",()=>toggle(favorites,p.id,STORE.favorites));
     $("[data-map-visited]")?.addEventListener("click",()=>toggle(visited,p.id,STORE.visited));
   }
@@ -86,7 +88,7 @@
     const q=norm($("[data-map-db-search]")?.value||"");
     const items=allPlaces().filter(p=>!q||norm([p.name,p.area,p.real_life,p.kind].join(" ")).includes(q));
     const pageSize=90,page=Math.max(0,Number(root.dataset.page||0)),start=page*pageSize,visible=items.slice(start,start+pageSize);
-    root.innerHTML=visible.map(p=>'<article class="map-database-card"><div class="map-database-meta"><span>'+esc(areaLabel(p))+'</span><span>·</span><span>'+esc(categoryNames[p.kind]||p.kind)+'</span><span>·</span><span>'+esc(p.confidence||"community")+'</span></div><h3>'+esc(categoryIcons[p.kind]||"📍")+' '+esc(p.name)+'</h3><p>'+esc(p.real_life||"برای این مکان نمونه واقعی ثبت نشده است.")+'</p><button type="button" data-map-open="'+esc(p.id)+'">نمایش روی نقشه</button></article>').join("")||'<p class="map-empty">مکانی پیدا نشد.</p>';
+    root.innerHTML=visible.map(p=>'<article class="map-database-card"><div class="map-database-meta"><span>'+esc(areaLabel(p))+'</span><span>·</span><span>'+esc(categoryNames[p.kind]||p.kind)+'</span><span>·</span><span>'+esc(confidenceLabel(p.confidence))+'</span></div><h3>'+esc(categoryIcons[p.kind]||"📍")+' '+esc(p.name)+'</h3><p>'+esc(p.real_life||"برای این مکان نمونه واقعی ثبت نشده است.")+'</p><button type="button" data-map-open="'+esc(p.id)+'">نمایش روی نقشه</button></article>').join("")||'<p class="map-empty">مکانی پیدا نشد.</p>';
     const pages=Math.ceil(items.length/pageSize);
     root.insertAdjacentHTML("beforeend",'<div class="map-pagination"><button type="button" data-map-prev '+(page===0?"disabled":"")+'>قبلی</button><span>صفحه '+format(page+1)+' از '+format(Math.max(1,pages))+' · '+format(items.length)+' مکان</span><button type="button" data-map-next '+(page+1>=pages?"disabled":"")+'>بعدی</button></div>');
     $$("[data-map-open]",root).forEach(b=>b.addEventListener("click",()=>{switchTab("explore");select(b.dataset.mapOpen,true)}));
@@ -162,7 +164,7 @@
   $("[data-map-route-clear]")?.addEventListener("click",()=>{routeLayer?.clearLayers();if($("[data-map-route-from]"))$("[data-map-route-from]").value="";if($("[data-map-route-to]"))$("[data-map-route-to]").value=""});
   $("[data-map-reset]")?.addEventListener("click",()=>map?.fitBounds([[-1024,0],[0,1024]]));
   $$("[data-map-zoom]").forEach(b=>b.addEventListener("click",()=>map?.setZoom(map.getZoom()+(b.dataset.mapZoom==="in"?1:-1))));
-  $("[data-map-fullscreen]")?.addEventListener("click",()=>{if(document.fullscreenElement)document.exitFullscreen?.();else viewport.requestFullscreen?.().then(()=>setTimeout(()=>map?.invalidateSize(),100))});
+  $("[data-map-fullscreen]")?.addEventListener("click",()=>{if(document.fullscreenElement){document.exitFullscreen?.();}else{const request=viewport.requestFullscreen?.();request?.then?.(()=>setTimeout(()=>map?.invalidateSize(),100));}});
   $("[data-map-districts]")?.addEventListener("change",e=>renderDistricts(e.target.checked));
   const theme=safeRead(STORE.theme,"dark");if(theme==="light")document.body.classList.add("map-light");
   $("[data-map-theme]")?.addEventListener("click",()=>{const light=document.body.classList.toggle("map-light");safeWrite(STORE.theme,light?"light":"dark");$("[data-map-theme]").textContent=light?"☀ حالت تیره":"☾ حالت روشن"});
