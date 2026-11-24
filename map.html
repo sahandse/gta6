@@ -3,47 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>نقشه کامل رسمی لئونیدا — GTA VI HUB</title>
-<meta name="description" content="مشاهده نقشه کامل رسمی ایالت لئونیدا در GTA VI با امکان بزرگ‌نمایی و جابه‌جایی." />
+<title>نقشه تعاملی لئونیدا — GTA VI HUB</title>
+<meta name="description" content="نقشه تعاملی GTA VI؛ جست‌وجو، دسته‌بندی، ذخیره و مدیریت مکان‌های لئونیدا." />
 <meta name="theme-color" content="#07060d" />
 <link rel="stylesheet" href="assets/css/modern.css" />
 <link rel="stylesheet" href="assets/css/style.css" />
 <link rel="stylesheet" href="assets/css/gta-vi-theme.css" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322e0ff'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='%23061018' text-anchor='middle'%3EVI%3C/text%3E%3C/svg%3E" />
-<style>
-.official-map-wrap{margin:24px auto 56px}
-.official-map-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-.map-actions{display:flex;gap:8px;flex-wrap:wrap}
-.map-actions button,.map-actions a{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;padding:10px 14px;font:inherit;font-size:13px;cursor:pointer;text-decoration:none}
-.map-actions button:hover,.map-actions a:hover{border-color:var(--pink)}
-.map-zoom-label{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.official-map-viewport{position:relative;height:min(78vh,900px);min-height:440px;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#10151b;touch-action:none;cursor:grab}
-.official-map-viewport.dragging{cursor:grabbing}
-.official-map-image{position:absolute;top:50%;left:50%;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;transform:translate(-50%,-50%) scale(1);transform-origin:center;user-select:none;-webkit-user-drag:none;pointer-events:none}
-.map-attribution{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:12px}
-.map-attribution a{color:var(--cyan)}
-.map-intro{max-width:780px}
-.map-notice{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--panel);color:var(--muted);font-size:13px;margin-top:16px}
-.map-location-tools{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:18px 0 12px}
-.map-location-search{display:grid;gap:6px;min-width:min(100%,260px);font-size:12px;color:var(--muted)}
-.map-location-search input{min-height:42px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--panel);color:var(--text);font:inherit}
-.map-location-filters{display:flex;gap:7px;flex-wrap:wrap}
-.map-location-filters button{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;cursor:pointer}
-.map-location-filters button.active{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 14%,var(--panel))}
-.map-location-count{font-size:12px;color:var(--muted);margin-inline-start:auto}
-.map-marker-layer{position:absolute;left:50%;top:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:2}
-.map-location-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;border:1px solid rgba(255,255,255,.75);border-radius:999px;min-width:34px;height:34px;padding:0 8px;background:#ff2d95;color:#fff;box-shadow:0 4px 18px #0009;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
-.map-location-marker[aria-pressed="true"]{outline:3px solid #fff;outline-offset:3px;background:#22a9c8}
-.map-location-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:12px}
-.map-location-card{display:flex;align-items:flex-start;gap:10px;text-align:right;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px;color:var(--text);font:inherit;cursor:pointer}
-.map-location-card:hover{border-color:var(--pink)}
-.map-location-card .map-place-icon{font-size:22px}
-.map-location-card small{display:block;color:var(--muted);margin-top:4px;line-height:1.6}
-.map-location-card.selected{border-color:var(--cyan);background:color-mix(in srgb,var(--cyan) 9%,var(--panel))}
-@media(max-width:640px){.map-location-tools{align-items:stretch}.map-location-count{margin-inline-start:0}.map-location-list{grid-template-columns:1fr 1fr}.map-location-card{padding:9px;font-size:12px}}
-@media(max-width:420px){.map-location-list{grid-template-columns:1fr}}
-@media(max-width:640px){.official-map-viewport{height:68vh;min-height:380px}.official-map-toolbar{align-items:flex-start}.map-actions button,.map-actions a{padding:9px 11px}}
-</style>
+<link rel="stylesheet" href="assets/css/map.css" />
+
 </head>
 <body data-page="map">
 <header class="site-header">
@@ -55,45 +23,145 @@
     <div class="header-actions"><label class="search-box"><input type="search" placeholder="جست‌وجو…" aria-label="جست‌وجو" data-global-search /></label><button class="nav-toggle" aria-label="منو" aria-expanded="false" aria-controls="mainnav">☰</button></div>
   </div>
 </header>
-<main>
-  <div class="wrap page-head map-intro">
-    <div class="breadcrumb"><a href="index.html"><img class="nav-thumb" src="https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_01.0naeahss9-1x6.jpg?akim=1&imdensity=1&imwidth=480" alt="" loading="lazy"><span>خانه</span></a> / نقشه رسمی</div>
-    <span class="kicker">THE GREAT STATE OF LEONIDA</span>
-    <h1>نقشه کامل رسمی لئونیدا</h1>
-    <p>نسخه رسمی منتشرشده توسط Rockstar Games؛ نقشه کامل ایالت را با بزرگ‌نمایی و حرکت آزاد بررسی کن. برای دیدن جزئیات، روی نقشه زوم کن یا آن را با انگشت و ماوس جابه‌جا کن.</p>
-    <div class="map-notice">این تصویر، نقشه رسمی چاپی Rockstar است؛ نقشه تعاملی داخل بازی یا نقشه دارای نشانگرهای مکان‌یابی نیست. برای حفظ دقت، هیچ مسیر یا مختصات ساختگی روی آن اضافه نشده است.</div>
-  </div>
-  <section class="wrap official-map-wrap" aria-label="نقشه رسمی لئونیدا">
-    <div class="official-map-toolbar">
-      <div class="map-zoom-label" data-map-zoom-label>بزرگ‌نمایی: ۱۰۰٪</div>
-      <div class="map-actions">
-        <button type="button" data-map-zoom="out" aria-label="کوچک‌نمایی">−</button>
-        <button type="button" data-map-zoom="in" aria-label="بزرگ‌نمایی">+</button>
-        <button type="button" data-map-reset>بازنشانی</button>
-        <a href="https://www.rockstargames.com/VI/media/artwork-wallpapers" target="_blank" rel="noopener noreferrer">نسخه اصلی در Rockstar</a>
+<main class="map-app">
+  <section class="map-hero wrap">
+    <div>
+      <span class="kicker">INTERACTIVE WORLD DATABASE</span>
+      <h1>نقشه تعاملی لئونیدا</h1>
+      <p>مکان‌های معرفی‌شده در سایت را جست‌وجو کن، روی نقشه ببین، ذخیره کن و پیشرفت اکتشافت را دنبال کن.</p>
+      <div class="map-trust-note"><span class="trust-dot"></span> مکان‌های رسمی از صفحات Rockstar مشخص شده‌اند؛ مختصات نشانگرها تقریبی است و نقشه رسمی، نقشه GPS داخل بازی نیست.</div>
+    </div>
+    <div class="map-hero-actions">
+      <button type="button" class="map-button" data-map-theme>☾ حالت روشن</button>
+      <a class="map-button map-button-quiet" href="https://www.rockstargames.com/VI/only-in-leonida" target="_blank" rel="noopener noreferrer">منبع رسمی Rockstar ↗</a>
+    </div>
+  </section>
+
+  <section class="wrap map-workspace">
+    <div class="map-topbar">
+      <div class="map-tabs" role="tablist" aria-label="بخش‌های نقشه">
+        <button class="active" type="button" role="tab" aria-selected="true" data-map-tab="explore">🗺️ کاوش</button>
+        <button type="button" role="tab" aria-selected="false" data-map-tab="database">▤ بانک مکان‌ها</button>
+        <button type="button" role="tab" aria-selected="false" data-map-tab="progress">◉ پیشرفت من</button>
       </div>
+      <div class="map-summary"><strong data-map-total>۰</strong><span>مکان ثبت‌شده</span><i></i><strong data-map-visible>۰</strong><span>نتیجه</span></div>
     </div>
-    <div class="map-location-tools">
-      <label class="map-location-search">جست‌وجوی مکان
-        <input type="search" data-map-location-search placeholder="نام شهر، منطقه یا مکان…" />
-      </label>
-      <div class="map-location-filters" data-map-location-filters>
-        <button type="button" class="active" data-map-region="all">همه مناطق</button>
-        <button type="button" data-map-region="Vice City">Vice City</button>
-        <button type="button" data-map-region="Leonida">Leonida</button>
+
+    <section class="map-panel active" data-map-panel="explore">
+      <div class="map-layout">
+        <aside class="map-sidebar">
+          <label class="map-search-label">جست‌وجوی مکان
+            <input type="search" data-map-search placeholder="نام فارسی یا انگلیسی مکان…" autocomplete="off">
+          </label>
+          <div class="map-sidebar-heading"><strong>دسته‌بندی‌ها</strong><button type="button" class="map-text-button" data-map-clear-filters>پاک کردن</button></div>
+          <div class="map-category-list" data-map-categories></div>
+          <div class="map-sidebar-heading"><strong>منطقه</strong></div>
+          <div class="map-region-list">
+            <label><input type="radio" name="map-region" value="all" checked> همه مناطق</label>
+            <label><input type="radio" name="map-region" value="Vice City"> Vice City</label>
+            <label><input type="radio" name="map-region" value="Leonida"> سایر Leonida</label>
+          </div>
+          <div class="map-sidebar-heading"><strong>اعتبار اطلاعات</strong></div>
+          <div class="map-region-list">
+            <label><input type="checkbox" data-map-official checked> رسمی Rockstar</label>
+            <label><input type="checkbox" data-map-community checked> موارد سایت / نیازمند تأیید</label>
+          </div>
+          <div class="map-legend">
+            <span><i class="legend-official"></i> رسمی</span>
+            <span><i class="legend-unverified"></i> نیازمند تأیید</span>
+          </div>
+          <div class="map-sidebar-foot">مختصات تقریبی‌اند؛ نشانگرها برای راهنمایی بصری هستند.</div>
+        </aside>
+
+        <div class="map-main-area">
+          <div class="map-canvas-toolbar">
+            <span data-map-zoom-label>بزرگ‌نمایی: ۱۰۰٪</span>
+            <div class="map-toolbar-actions">
+              <button type="button" data-map-zoom="out" aria-label="کوچک‌نمایی">−</button>
+              <button type="button" data-map-zoom="in" aria-label="بزرگ‌نمایی">+</button>
+              <button type="button" data-map-reset>بازنشانی</button>
+              <button type="button" data-map-fullscreen>تمام‌صفحه</button>
+            </div>
+          </div>
+          <div class="map-viewport" data-map-viewport>
+            <img class="map-image" data-map-image src="https://www.rockstargames.com/VI/_next/static/media/Leonida_Map_Poster.08ir77j-.26ny.jpg?akim=1&imdensity=1&imwidth=3840" alt="نقشه رسمی Leonida منتشرشده توسط Rockstar Games" draggable="false">
+            <div class="map-marker-layer" data-map-marker-layer>
+              <svg class="map-route-svg" data-map-route-svg aria-hidden="true"></svg>
+            </div>
+            <div class="map-image-loading" data-map-image-status>در حال بارگذاری نقشه…</div>
+          </div>
+          <div class="map-selected-card" data-map-selected-card>
+            <div class="map-selected-empty">برای مشاهده جزئیات، یک نشانگر یا مکان از فهرست را انتخاب کن.</div>
+          </div>
+          <div class="map-route-panel">
+            <div><strong>مسیر بین دو مکان</strong><small>نمایش خط مستقیم تقریبی؛ مسیر جاده‌ای واقعی در دسترس نیست.</small></div>
+            <label>مبدأ<select data-map-route-from><option value="">انتخاب مبدأ</option></select></label>
+            <label>مقصد<select data-map-route-to><option value="">انتخاب مقصد</option></select></label>
+            <button type="button" class="map-button map-route-button" data-map-route>نمایش مسیر</button>
+            <button type="button" class="map-text-button" data-map-route-clear>پاک کردن مسیر</button>
+          </div>
+        </div>
       </div>
-      <span class="map-location-count" data-map-location-count></span>
-    </div>
-    <div class="official-map-viewport" data-official-map-viewport>
-      <img class="official-map-image" data-official-map-image src="https://www.rockstargames.com/VI/_next/static/media/Leonida_Map_Poster.08ir77j-.26ny.jpg?akim=1&imdensity=1&imwidth=3840" alt="نقشه کامل رسمی ایالت Leonida در بازی Grand Theft Auto VI، منتشرشده توسط Rockstar Games" draggable="false" />
-      <div class="map-marker-layer" data-map-marker-layer aria-label="مکان‌های ثبت‌شده در دیتابیس سایت"></div>
-    </div>
-    <div class="map-location-list" data-map-location-list aria-live="polite"></div>
-    <div class="map-attribution"><span>تصویر و حقوق اثر نقشه: Rockstar Games</span><span>نشانگرها از دیتابیس فعلی سایت می‌آیند؛ جایگاه‌ها تقریبی و غیررسمی‌اند.</span></div>
+    </section>
+
+    <section class="map-panel" data-map-panel="database" hidden>
+      <div class="map-database-head">
+        <div><h2>بانک اطلاعات مکان‌ها</h2><p>فهرست یکپارچه مکان‌های ثبت‌شده در دیتابیس نقشه</p></div>
+        <label class="map-search-label">جست‌وجو در بانک
+          <input type="search" data-map-db-search placeholder="نام، منطقه، دسته یا توضیح…">
+        </label>
+      </div>
+      <div class="map-database-grid" data-map-database></div>
+    </section>
+
+    <section class="map-panel" data-map-panel="progress" hidden>
+      <div class="map-progress-head"><div><h2>پیشرفت اکتشاف</h2><p>وضعیت ذخیره‌شده فقط در همین مرورگر نگهداری می‌شود.</p></div><button type="button" class="map-text-button" data-map-progress-reset>پاک کردن پیشرفت</button></div>
+      <div class="map-progress-stats">
+        <article><span>مکان‌های بازدیدشده</span><strong data-map-visited-count>۰</strong></article>
+        <article><span>علاقه‌مندی‌ها</span><strong data-map-favorite-count>۰</strong></article>
+        <article><span>درصد اکتشاف</span><strong data-map-progress-percent>۰٪</strong></article>
+      </div>
+      <div class="map-progress-track"><span data-map-progress-bar></span></div>
+      <div class="map-progress-columns">
+        <div><h3>بازدیدشده‌ها</h3><div data-map-visited-list class="map-progress-list"></div></div>
+        <div><h3>علاقه‌مندی‌ها</h3><div data-map-favorites-list class="map-progress-list"></div></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="wrap map-admin-section">
+    <details class="map-admin">
+      <summary>⚙️ مدیریت محلی مکان‌ها و پشتیبان‌گیری</summary>
+      <div class="map-admin-content">
+        <p>این ابزار بدون بک‌اند کار می‌کند. تغییرات جدید فقط در مرورگر فعلی ذخیره می‌شوند؛ برای انتشار عمومی، خروجی JSON را در مخزن GitHub جایگزین فایل دیتابیس کن. این بخش احراز هویت سروری ندارد و پنل امن چندکاربره محسوب نمی‌شود.</p>
+        <form data-map-add-form class="map-admin-form">
+          <label>نام مکان<input name="name" required maxlength="90" placeholder="نام انگلیسی یا فارسی"></label>
+          <label>منطقه<select name="region"><option>Vice City</option><option>Leonida</option></select></label>
+          <label>دسته<select name="category"><option value="city">شهر / منطقه</option><option value="district">محله</option><option value="coast">ساحل / جزیره</option><option value="nature">طبیعت</option><option value="landmark">مکان شاخص</option><option value="other">سایر</option></select></label>
+          <label>مختصات افقی (%)<input name="x" type="number" min="0" max="100" value="50" required></label>
+          <label>مختصات عمودی (%)<input name="y" type="number" min="0" max="100" value="50" required></label>
+          <label class="wide">توضیحات<textarea name="desc" rows="2" maxlength="500" placeholder="توضیح کوتاه مکان"></textarea></label>
+          <button class="map-button" type="submit">افزودن مکان به این مرورگر</button>
+        </form>
+        <div class="map-admin-actions">
+          <button type="button" class="map-button" data-map-export>خروجی JSON</button>
+          <label class="map-button map-file-button">ورود JSON<input type="file" data-map-import accept="application/json,.json" hidden></label>
+          <button type="button" class="map-button map-button-danger" data-map-reset-local>بازگردانی دیتابیس اولیه</button>
+          <span data-map-admin-status role="status"></span>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="wrap map-source-note">
+    <strong>منابع و دقت اطلاعات</strong>
+    <p>نام مقصدهای رسمی بر اساس صفحات معرفی Rockstar است. نقاط دقیق روی تصویر نقشه، مختصات جغرافیایی یا مسیرهای درون‌بازی از منبع رسمی استخراج نشده‌اند؛ برای همین با برچسب «تقریبی» نمایش داده می‌شوند. موارد محلی دیگر نیز تا زمان تأیید منبع، جداگانه علامت‌گذاری شده‌اند.</p>
+    <div><a href="https://www.rockstargames.com/VI/only-in-leonida" target="_blank" rel="noopener noreferrer">صفحه Only in Leonida ↗</a><a href="https://www.rockstargames.com/VI/media/artwork-wallpapers" target="_blank" rel="noopener noreferrer">نقشه و آثار رسمی ↗</a><a href="https://www.rockstargames.com/VI/media/screenshots" target="_blank" rel="noopener noreferrer">گالری تصاویر رسمی ↗</a></div>
   </section>
 </main>
 <footer class="site-footer"><div class="wrap"><div class="footer-bottom"><span>© <span data-year>2026</span> GTA VI HUB — پروژه هواداری مستقل</span><span>Grand Theft Auto و دارایی‌های آن متعلق به Rockstar Games است.</span></div></div></footer>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/map.js"></script>
 </body>
 </html>
