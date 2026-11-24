@@ -4,8 +4,8 @@
     "module": "none",
     "lib": ["ES2020", "DOM"],
     "strict": true,
-    "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "outFile": "assets/js/main.js"
   },
   "include": ["src/**/*.ts"]
 }
