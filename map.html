@@ -24,6 +24,24 @@
 .map-attribution a{color:var(--cyan)}
 .map-intro{max-width:780px}
 .map-notice{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--panel);color:var(--muted);font-size:13px;margin-top:16px}
+.map-location-tools{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:18px 0 12px}
+.map-location-search{display:grid;gap:6px;min-width:min(100%,260px);font-size:12px;color:var(--muted)}
+.map-location-search input{min-height:42px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--panel);color:var(--text);font:inherit}
+.map-location-filters{display:flex;gap:7px;flex-wrap:wrap}
+.map-location-filters button{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;cursor:pointer}
+.map-location-filters button.active{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 14%,var(--panel))}
+.map-location-count{font-size:12px;color:var(--muted);margin-inline-start:auto}
+.map-marker-layer{position:absolute;left:50%;top:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:2}
+.map-location-marker{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;border:1px solid rgba(255,255,255,.75);border-radius:999px;min-width:34px;height:34px;padding:0 8px;background:#ff2d95;color:#fff;box-shadow:0 4px 18px #0009;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.map-location-marker[aria-pressed="true"]{outline:3px solid #fff;outline-offset:3px;background:#22a9c8}
+.map-location-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:12px}
+.map-location-card{display:flex;align-items:flex-start;gap:10px;text-align:right;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px;color:var(--text);font:inherit;cursor:pointer}
+.map-location-card:hover{border-color:var(--pink)}
+.map-location-card .map-place-icon{font-size:22px}
+.map-location-card small{display:block;color:var(--muted);margin-top:4px;line-height:1.6}
+.map-location-card.selected{border-color:var(--cyan);background:color-mix(in srgb,var(--cyan) 9%,var(--panel))}
+@media(max-width:640px){.map-location-tools{align-items:stretch}.map-location-count{margin-inline-start:0}.map-location-list{grid-template-columns:1fr 1fr}.map-location-card{padding:9px;font-size:12px}}
+@media(max-width:420px){.map-location-list{grid-template-columns:1fr}}
 @media(max-width:640px){.official-map-viewport{height:68vh;min-height:380px}.official-map-toolbar{align-items:flex-start}.map-actions button,.map-actions a{padding:9px 11px}}
 </style>
 </head>
@@ -55,10 +73,23 @@
         <a href="https://www.rockstargames.com/VI/media/artwork-wallpapers" target="_blank" rel="noopener noreferrer">نسخه اصلی در Rockstar</a>
       </div>
     </div>
+    <div class="map-location-tools">
+      <label class="map-location-search">جست‌وجوی مکان
+        <input type="search" data-map-location-search placeholder="نام شهر، منطقه یا مکان…" />
+      </label>
+      <div class="map-location-filters" data-map-location-filters>
+        <button type="button" class="active" data-map-region="all">همه مناطق</button>
+        <button type="button" data-map-region="Vice City">Vice City</button>
+        <button type="button" data-map-region="Leonida">Leonida</button>
+      </div>
+      <span class="map-location-count" data-map-location-count></span>
+    </div>
     <div class="official-map-viewport" data-official-map-viewport>
       <img class="official-map-image" data-official-map-image src="https://www.rockstargames.com/VI/_next/static/media/Leonida_Map_Poster.08ir77j-.26ny.jpg?akim=1&imdensity=1&imwidth=3840" alt="نقشه کامل رسمی ایالت Leonida در بازی Grand Theft Auto VI، منتشرشده توسط Rockstar Games" draggable="false" />
+      <div class="map-marker-layer" data-map-marker-layer aria-label="مکان‌های ثبت‌شده در دیتابیس سایت"></div>
     </div>
-    <div class="map-attribution"><span>تصویر و حقوق اثر: Rockstar Games</span><span>بزرگ‌نمایی با دکمه‌ها یا اسکرول · جابه‌جایی با کشیدن نقشه</span></div>
+    <div class="map-location-list" data-map-location-list aria-live="polite"></div>
+    <div class="map-attribution"><span>تصویر و حقوق اثر نقشه: Rockstar Games</span><span>نشانگرها از دیتابیس فعلی سایت می‌آیند؛ جایگاه‌ها تقریبی و غیررسمی‌اند.</span></div>
   </section>
 </main>
 <footer class="site-footer"><div class="wrap"><div class="footer-bottom"><span>© <span data-year>2026</span> GTA VI HUB — پروژه هواداری مستقل</span><span>Grand Theft Auto و دارایی‌های آن متعلق به Rockstar Games است.</span></div></div></footer>
