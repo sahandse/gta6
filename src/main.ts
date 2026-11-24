@@ -9,7 +9,9 @@ const sections: HubItem[] = [
   { title: "نقشه لئونیدا", subtitle: "شهرها، جزیره‌ها و مناطق دیدنی", href: "map.html", image: officialMedia.keys, tag: "EXPLORE" },
   { title: "شخصیت‌ها", subtitle: "قهرمانان و چهره‌های دنیای بازی", href: "characters.html", image: officialMedia.lucia, tag: "PEOPLE" },
   { title: "وسایل نقلیه", subtitle: "گاراژ و وسایل نقلیه لئونیدا", href: "vehicles.html", image: officialMedia.viceCity, tag: "GARAGE" },
-  { title: "اخبار و رسانه", subtitle: "تصاویر و خبرهای منتشرشده", href: "news.html", image: officialMedia.hero, tag: "MEDIA" }
+  { title: "اخبار و رسانه", subtitle: "تصاویر و خبرهای منتشرشده", href: "news.html", image: officialMedia.hero, tag: "MEDIA" },
+  { title: "Grassrivers", subtitle: "تالاب‌ها و طبیعت وحشی لئونیدا", href: "map.html", image: "https://www.rockstargames.com/VI/_next/static/media/Grassrivers_01.1096rw4lbjur_.jpg?akim=1&imdensity=1&imwidth=1400", tag: "WILDLIFE" },
+  { title: "Port Gellhorn", subtitle: "بندر و ساحل غربی لئونیدا", href: "map.html", image: "https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_01.0fmisvza-5-cq.jpg?akim=1&imdensity=1&imwidth=1400", tag: "COAST" }
 ];
 const $ = <T extends HTMLElement>(selector: string): T | null => document.querySelector<T>(selector);
 const htmlEntities: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
