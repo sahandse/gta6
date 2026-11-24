@@ -2,6 +2,6 @@
   "name": "gta6-hub",
   "private": true,
   "version": "2.0.0",
-  "scripts": { "build": "tsc -p tsconfig.json --noEmit" },
+  "scripts": { "build": "tsc -p tsconfig.json" },
   "devDependencies": { "typescript": "^5.8.3" }
 }
