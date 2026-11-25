@@ -1,0 +1,56 @@
+/* Immersive pause-menu system inspired by GTA VI's in-game navigation */
+.site-header{position:sticky!important;top:0;z-index:120!important;background:linear-gradient(180deg,#09070cf5,#100a13e8)!important;border-bottom:1px solid #ff79aa42!important;backdrop-filter:blur(20px) saturate(1.2)}
+.nav-wrap{height:72px!important}
+.nav-tools{gap:10px}
+.menu-toggle{display:inline-flex!important;align-items:center;justify-content:center;gap:9px;min-height:40px;padding:8px 14px!important;border:1px solid #ff7cad70!important;border-radius:4px!important;background:linear-gradient(120deg,#ff4f9a24,#ff9b5912)!important;color:#fff!important;font-size:10px;font-weight:900;letter-spacing:.13em;cursor:pointer;box-shadow:inset 0 0 18px #ff4f9a0c,0 5px 18px #0005;transition:background .2s,border-color .2s,transform .2s}
+.menu-toggle:hover{background:linear-gradient(120deg,#ff4f9a48,#ff9b5928)!important;border-color:#ff9abf!important;transform:translateY(-1px)}
+.menu-toggle>span:first-child{font-size:17px;color:#ff9abb}
+.nav-links{display:none!important;position:fixed!important;top:86px!important;left:max(22px,calc((100vw - 1320px)/2))!important;right:auto!important;width:min(780px,calc(100vw - 44px))!important;max-height:calc(100dvh - 112px);overflow:auto;z-index:130!important;display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px!important;padding:18px!important;border:1px solid #ff8bb75c!important;border-radius:7px!important;background:linear-gradient(145deg,#17101bea,#0d0b12f5)!important;box-shadow:0 24px 90px #000c,inset 0 0 40px #ff4f9a0b!important;backdrop-filter:blur(24px) saturate(1.3)}
+.nav-links.is-open{display:grid!important}
+.nav-links:before{content:"LEONIDA  /  PAUSE MENU";grid-column:1/-1;padding:0 3px 10px;color:#ff9abf;font:900 10px/1.4 Impact,"Arial Narrow",sans-serif;letter-spacing:.24em;border-bottom:1px solid #ffffff1c;margin-bottom:3px}
+.nav-links a{position:relative;display:flex!important;min-width:0;min-height:118px;flex-direction:column;align-items:stretch!important;justify-content:flex-end;gap:0!important;overflow:hidden;padding:0!important;border:1px solid #ffffff20!important;border-radius:4px!important;background:#17121a!important;color:#fff!important;font-size:12px!important;font-weight:900;letter-spacing:.03em;transition:border-color .2s,transform .2s,filter .2s!important}
+.nav-links a:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(0deg,#08070cf5 0%,#08070c8a 35%,transparent 100%);pointer-events:none}
+.nav-links a:hover,.nav-links a.active{transform:translateY(-2px);border-color:#ff83b2!important;background:#1d1420!important;box-shadow:0 8px 22px #0008,inset 0 -2px #ff79aa!important}
+.nav-links a>span:last-child{position:relative;z-index:2;padding:10px 12px 11px}
+.nav-thumb{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;border:0!important;border-radius:0!important;background-size:cover!important;background-position:center!important;filter:saturate(1.12) contrast(1.05)!important;transition:transform .45s!important}
+.nav-links a:hover .nav-thumb{transform:scale(1.07)!important}
+body.menu-open{overflow:hidden}
+body.menu-open:after{content:"";position:fixed;inset:0;z-index:110;background:#05040ac9;backdrop-filter:blur(5px);pointer-events:none}
+body.menu-open .site-header{border-bottom-color:#ff8bb7!important}
+.language-toggle{border-radius:4px!important}
+.search-wrap{border-radius:4px!important}
+.brand-mark{border-radius:4px!important;transform:skew(-7deg)!important}
+.brand-word{letter-spacing:.1em!important}
+.hero{min-height:min(790px,94vh)!important}
+.hero:after{background:linear-gradient(0deg,#100a13 0%,#100a13e8 12%,#100a1340 60%,#09070c70 100%),linear-gradient(90deg,#09070c9c,transparent 75%)!important}
+.hero-content{padding-top:190px!important}
+.hero .eyebrow{font-family:Impact,"Arial Narrow",sans-serif;letter-spacing:.25em}
+.hero h1{font-family:Impact,"Arial Narrow",Tahoma,sans-serif!important;letter-spacing:.015em!important;text-transform:uppercase}
+.hero-actions .btn{border-radius:3px!important;text-transform:uppercase;letter-spacing:.07em}
+.hero-meta{border-top:1px solid #ffffff30;padding-top:15px;max-width:590px}
+.game-quick-menu{width:min(1320px,calc(100% - 40px));margin:-24px auto 0;position:relative;z-index:3;padding:0 0 36px}
+.game-menu-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px;color:#ff9cbd;font:900 10px/1.4 Impact,"Arial Narrow",sans-serif;letter-spacing:.22em}
+.game-menu-heading span:last-child{color:#9d909d;font:700 9px/1.4 Tahoma,sans-serif;letter-spacing:.08em}
+.game-launch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.game-launch-card{position:relative;isolation:isolate;display:flex;min-height:155px;align-items:flex-end;overflow:hidden;padding:15px;border:1px solid #ffffff2b;border-radius:4px;background:#17111a;box-shadow:0 12px 28px #0006;transition:transform .22s,border-color .22s}
+.game-launch-card:before{content:"";position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .5s}
+.game-launch-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#08070cf5 0%,#08070c88 44%,#08070c10 100%)}
+.game-launch-card:hover{transform:translateY(-4px);border-color:#ff8bb7}
+.game-launch-card:hover:before{transform:scale(1.07)}
+.game-launch-card strong{display:block;color:#fff;font-size:16px;text-shadow:0 2px 12px #000}
+.game-launch-card small{display:block;margin-top:3px;color:#e9cbd9;font-size:9px;letter-spacing:.12em}
+.game-launch-card i{position:absolute;top:12px;inset-inline-end:13px;font:900 10px Impact,sans-serif;color:#fff8}
+.game-launch-card--map:before{background-image:url("../assets/images/nav/map-poster-240.webp")}
+.game-launch-card--story:before{background-image:url("../assets/images/nav/characters-lucia-240.webp")}
+.game-launch-card--garage:before{background-image:url("../assets/images/nav/vehicles-grotti-cheetah-240.webp")}
+.game-launch-card--media:before{background-image:url("../assets/images/nav/regions-vice-city-240.webp")}
+.section{scroll-margin-top:90px}
+.section-heading h2{letter-spacing:.01em}
+.feature-card,.card,.tile,.mission-chapter{border-radius:5px!important}
+.feature-card{border-color:#ffffff25}
+.feature-card .feature-tag{border-radius:2px}
+.btn,.pill,.chip,.mission-reset{border-radius:4px!important}
+.site-footer{border-top:1px solid #ff79aa38!important}
+html[lang="en"] .game-launch-card{text-align:left}
+@media(max-width:900px){.nav-wrap{height:66px!important}.nav-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}.game-launch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-launch-card{min-height:135px}}
+@media(max-width:520px){.nav-wrap{width:calc(100% - 24px)!important}.brand-word{font-size:15px!important}.search-wrap{padding:7px 9px!important}.search-wrap input{width:72px!important}.menu-toggle{padding:8px 9px!important}.menu-toggle>span:last-child{display:none}.nav-links{top:76px!important;left:12px!important;right:12px!important;width:auto!important;max-height:calc(100dvh - 90px);padding:12px!important;gap:7px!important}.nav-links a{min-height:105px!important;font-size:11px!important}.nav-links:before{font-size:9px}.game-quick-menu{width:calc(100% - 24px);padding-bottom:20px}.game-launch-grid{gap:7px}.game-launch-card{min-height:115px;padding:11px}.game-launch-card strong{font-size:13px}.game-menu-heading{font-size:9px}.hero{min-height:700px!important}.hero-content{padding-top:150px!important}.hero-meta{gap:14px;font-size:8px}.hero-meta strong{font-size:17px}}
