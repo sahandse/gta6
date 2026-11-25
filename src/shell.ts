@@ -57,6 +57,9 @@ export function header(page: string): string {
       ${navGroups.map((group) => `<section class="nav-menu-group nav-menu-group--${group.id}"><h3><span data-fa="${group.label}" data-en="${group.en}">${group.label}</span><i>0${navGroups.indexOf(group)+1}</i></h3>${group.items.map((item) => navLink(item, page)).join("")}</section>`).join("")}
       <a class="nav-official-link" href="https://www.rockstargames.com/VI/media" target="_blank" rel="noopener"><span>↗</span><b data-fa="رسانه رسمی Rockstar" data-en="Official Rockstar media">رسانه رسمی Rockstar</b></a>
     </nav>
+    <nav class="game-tabs" aria-label="Quick navigation">
+      ${[{id:"home",href:"index.html",fa:"خانه",en:"HOME"},{id:"map",href:"map.html",fa:"نقشه",en:"MAP"},{id:"vehicles",href:"vehicles.html",fa:"گاراژ",en:"GARAGE"},{id:"characters",href:"characters.html",fa:"شخصیت‌ها",en:"PEOPLE"},{id:"database",href:"database.html",fa:"آرشیو",en:"ARCHIVE"},{id:"news",href:"news.html",fa:"اخبار",en:"NEWS"}].map(item=>`<a href="${item.href}" ${page===item.id?'aria-current="page"':""} data-fa="${item.fa}" data-en="${item.en}">${item.fa}</a>`).join("")}
+    </nav>
     <div class="nav-tools">
       <label class="search-wrap" aria-label="جست‌وجو">
         <span aria-hidden="true">⌕</span>
