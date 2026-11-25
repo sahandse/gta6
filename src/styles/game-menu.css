@@ -54,3 +54,58 @@ body.menu-open .site-header{border-bottom-color:#ff8bb7!important}
 html[lang="en"] .game-launch-card{text-align:left}
 @media(max-width:900px){.nav-wrap{height:66px!important}.nav-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}.game-launch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-launch-card{min-height:135px}}
 @media(max-width:520px){.nav-wrap{width:calc(100% - 24px)!important}.brand-word{font-size:15px!important}.search-wrap{padding:7px 9px!important}.search-wrap input{width:72px!important}.menu-toggle{padding:8px 9px!important}.menu-toggle>span:last-child{display:none}.nav-links{top:76px!important;left:12px!important;right:12px!important;width:auto!important;max-height:calc(100dvh - 90px);padding:12px!important;gap:7px!important}.nav-links a{min-height:105px!important;font-size:11px!important}.nav-links:before{font-size:9px}.game-quick-menu{width:calc(100% - 24px);padding-bottom:20px}.game-launch-grid{gap:7px}.game-launch-card{min-height:115px;padding:11px}.game-launch-card strong{font-size:13px}.game-menu-heading{font-size:9px}.hero{min-height:700px!important}.hero-content{padding-top:150px!important}.hero-meta{gap:14px;font-size:8px}.hero-meta strong{font-size:17px}}
+
+/* Unified main menu and category dashboard */
+.nav-links{display:none!important;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:14px!important;padding:18px!important}
+.nav-links.is-open{display:grid!important}
+.nav-links:before{display:none!important}
+.nav-menu-head{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 3px 13px;border-bottom:1px solid #ffffff22;color:#ff9abf;font:900 11px/1.4 Impact,"Arial Narrow",Tahoma,sans-serif;letter-spacing:.2em}
+.nav-menu-head small{color:#a99aa8;font:700 8px/1.4 Tahoma,sans-serif;letter-spacing:.13em}
+.nav-menu-group{min-width:0;display:grid;grid-template-columns:1fr;gap:7px}
+.nav-menu-group h3{display:flex;align-items:center;justify-content:space-between;margin:0 0 2px;padding:0 3px 7px;border-bottom:1px solid #ffffff19;color:#f5eaf0;font-size:11px}
+.nav-menu-group h3 i{color:#ff8bb7;font:900 10px Impact,sans-serif}
+.nav-links .nav-menu-group a{min-height:72px!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding:8px!important;background:#ffffff08!important}
+.nav-links .nav-menu-group a:after{inset:0;background:linear-gradient(90deg,#0a0810d9,#0a081055)!important}
+.nav-links .nav-menu-group a .nav-thumb{position:relative!important;inset:auto!important;flex:0 0 54px;width:54px!important;height:54px!important;border:1px solid #ffffff28!important;border-radius:3px!important;background-size:cover!important}
+.nav-links .nav-menu-group a .nav-link-copy{position:relative;z-index:2;display:flex;flex:1;flex-direction:column;gap:4px;min-width:0;padding:0!important}
+.nav-links .nav-menu-group a .nav-link-copy b{font-size:11px}
+.nav-links .nav-menu-group a .nav-link-copy small{color:#b8aab6;font-size:9px;font-weight:500;letter-spacing:0}
+.nav-links .nav-official-link{grid-column:1/-1;display:flex!important;align-items:center;justify-content:center;gap:10px;min-height:38px!important;padding:8px!important;border:1px solid #ff8bb744!important;background:#ff4f9a10!important;color:#ffc1d8!important}
+.nav-links .nav-official-link:after{display:none}
+.nav-links .nav-official-link span{font-size:16px}
+.main-menu-console{position:relative;margin:4px auto 48px;padding:24px;border:1px solid #ff83b52d;background:linear-gradient(145deg,#17101bef,#0d0b12f5);box-shadow:0 22px 65px #0005}
+.console-topline{display:flex;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid #ffffff20;color:#ff9abf;font:900 9px/1.4 Impact,"Arial Narrow",sans-serif;letter-spacing:.2em}
+.console-topline span:last-child{color:#988b98}
+.console-topline i{display:inline-block;width:5px;height:5px;margin:0 7px 1px;border-radius:50%;background:#ff83b5;box-shadow:0 0 10px #ff83b5}
+.console-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:24px 0 20px}
+.console-heading h2{margin:5px 0;font-size:clamp(27px,4vw,42px);letter-spacing:.01em}
+.console-heading p{margin:0;color:#b9aeba;font-size:12px}
+.console-official{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3px 9px;min-width:180px;padding:12px;border:1px solid #ffffff24;background:#ffffff08;color:#fff}
+.console-official span{grid-row:span 2;color:#ff9abf;font-size:20px}
+.console-official b{font-size:11px}
+.console-official small{color:#988b98;font-size:8px;letter-spacing:.12em}
+.console-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.console-group{min-width:0;padding:12px;border:1px solid #ffffff1d;background:#09080d88}
+.console-group>header{min-height:92px;padding:4px 4px 12px;border-bottom:1px solid #ffffff1a}
+.console-group>header>span{color:#ff9abf;font:900 9px Impact,sans-serif;letter-spacing:.17em}
+.console-group>header h3{margin:8px 0 3px;color:#fff;font-size:17px}
+.console-group>header p{margin:0;color:#a99eaa;font-size:10px}
+.console-item{position:relative;display:flex;align-items:center;gap:10px;min-height:70px;margin-top:8px;padding:9px;border:1px solid #ffffff16;background:#ffffff07;color:#fff;transition:transform .2s,border-color .2s,background .2s}
+.console-item:hover{transform:translateY(-2px);border-color:#ff8bb7a0;background:#ff4f9a10}
+.console-item:before{content:"";position:absolute;inset:0 0 0 auto;width:34%;background-size:cover;background-position:center;opacity:.23;mask-image:linear-gradient(90deg,transparent,#000)}
+.console-item i{position:relative;z-index:1;display:grid;place-items:center;flex:0 0 28px;height:28px;border:1px solid #ff8bb74c;color:#ff9abf;font:900 10px Impact,sans-serif;font-style:normal}
+.console-item>span{position:relative;z-index:1;display:grid;gap:4px;flex:1;min-width:0}
+.console-item b{font-size:12px}
+.console-item small{color:#b1a4b1;font-size:9px}
+.console-item em{position:relative;z-index:1;color:#ff9abf;font-style:normal}
+.console-item--map:before{background-image:url("../assets/images/nav/map-poster-240.webp")}
+.console-item--database:before{background-image:url("../assets/images/nav/regions-vice-city-240.webp")}
+.console-item--progress:before{background-image:url("../assets/images/nav/regions-keys-240.webp")}
+.console-item--missions:before{background-image:url("../assets/images/nav/hero-jason-lucia-240.webp")}
+.console-item--characters:before{background-image:url("../assets/images/nav/characters-lucia-240.webp")}
+.console-item--vehicles:before{background-image:url("../assets/images/nav/vehicles-grotti-cheetah-240.webp")}
+.console-item--news:before{background-image:url("../assets/images/nav/vice-city-style-1-240.webp")}
+.console-item--resources:before{background-image:url("../assets/images/nav/regions-grassrivers-240.webp")}
+.console-disclaimer{margin:14px 0 0;color:#8f8490;font-size:9px;line-height:1.8}
+@media(max-width:900px){.nav-links{grid-template-columns:repeat(2,minmax(0,1fr))!important}.nav-menu-head,.nav-links .nav-official-link{grid-column:1/-1}.console-groups{grid-template-columns:1fr 1fr}.console-group--garage{grid-column:1/-1}.console-group--garage .console-item{display:inline-flex;width:calc(33.333% - 7px);vertical-align:top}}
+@media(max-width:600px){.nav-links{grid-template-columns:1fr!important;top:76px!important;left:12px!important;right:12px!important;width:auto!important;max-height:calc(100dvh - 90px);padding:12px!important}.nav-menu-group{grid-template-columns:1fr 1fr}.nav-menu-group h3{grid-column:1/-1}.nav-links .nav-menu-group a{min-height:65px!important;gap:7px!important}.nav-links .nav-menu-group a .nav-thumb{flex-basis:42px;width:42px!important;height:42px!important}.nav-links .nav-menu-group a .nav-link-copy b{font-size:10px}.nav-links .nav-menu-group a .nav-link-copy small{font-size:8px}.main-menu-console{width:calc(100% - 24px);padding:14px;margin-bottom:30px}.console-heading{align-items:flex-start;flex-direction:column;padding:18px 0 14px}.console-official{width:100%}.console-groups{grid-template-columns:1fr;gap:9px}.console-group--garage{grid-column:auto}.console-group--garage .console-item{display:flex;width:auto}.console-group>header{min-height:76px}.console-item{min-height:64px}.console-topline{font-size:8px}.console-topline span:last-child{font-size:7px}}
