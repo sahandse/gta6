@@ -163,7 +163,7 @@ export const characters: Character[] = [
     color: ["#d4bd98", "#8a8173"],
     stats: {},
     image: "characters/raul",
-  },,
+  },
   {
     name: "Abe Gonzalez",
     role: "وکیل Vice City",
