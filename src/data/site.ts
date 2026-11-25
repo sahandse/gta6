@@ -48,13 +48,6 @@ export const hubSections: HubSection[] = [
     tag: "MEDIA",
   },
   {
-    title: "چیت‌کدها",
-    subtitle: "کدهای PS5 و Xbox با کپی سریع",
-    href: "cheats.html",
-    image: "vice-city/style-1",
-    tag: "CODES",
-  },
-  {
     title: "Grassrivers",
     subtitle: "تالاب‌ها و طبیعت وحشی لئونیدا",
     href: "map.html",
