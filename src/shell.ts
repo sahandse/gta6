@@ -93,7 +93,6 @@ export function footer(): string {
         <ul>
           <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">Rockstar Games — GTA VI</a></li>
           <li><a href="https://www.rockstargames.com/VI/media/screenshots" target="_blank" rel="noopener">Official screenshots</a></li>
-          <li><a href="https://www.gtabase.com/gta-6/characters/" target="_blank" rel="noopener">GTABase — Characters</a></li>
           <li><a href="https://www.gtabase.com/gta-6/vehicles/" target="_blank" rel="noopener">GTABase — Vehicles</a></li>
           <li><a href="https://www.gtabase.com/gta-6/map-locations/" target="_blank" rel="noopener">GTABase — Locations</a></li>
           <li><a href="https://github.com/sahandse/gta6" target="_blank" rel="noopener">GitHub repository</a></li>
