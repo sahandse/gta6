@@ -1,5 +1,5 @@
 import type { Character } from "../types";
-import { escapeHTML, gradient, statBar } from "../lib/dom";
+import { escapeHTML } from "../lib/dom";
 import { imageTag } from "../lib/media";
 
 export function characterCard(character: Character): string {
@@ -14,11 +14,7 @@ export function characterCard(character: Character): string {
       <span class="role">${escapeHTML(character.role)}</span>
       <h3>${escapeHTML(character.name)}</h3>
       <p>${escapeHTML(character.bio)}</p>
-      <div class="stat-lines">
-        ${Object.entries(character.stats)
-          .map(([label, value]) => statBar(label, value, gradient(character.color)))
-          .join("")}
-      </div>
+      <div class="profile-source"><span>اطلاعات داستانی</span><small>بر اساس معرفی رسمی Rockstar Games و تطبیق منابع مرجع</small></div>
     </div>
   </article>`;
 }
