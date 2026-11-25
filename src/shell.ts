@@ -26,6 +26,7 @@ const navGroups: NavGroup[] = [
     { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters", description: "پروفایل چهره‌های شناخته‌شده", enDescription: "Profiles of revealed characters" },
   ]},
   { id: "garage", label: "گاراژ و آرشیو", en: "GARAGE & ARCHIVE", items: [
+    { id: "database", href: "database.html", label: "مرکز دیتابیس", en: "Database index", thumb: "database", description: "همه آرشیوها و دسته‌بندی‌ها", enDescription: "All catalogues and categories" },
     { id: "vehicles", href: "vehicles.html", label: "دیتابیس وسایل نقلیه", en: "Vehicle database", thumb: "vehicles", description: "فیلتر و مقایسه مشخصات ثبت‌شده", enDescription: "Browse and filter listed vehicles" },
     { id: "news", href: "news.html", label: "اخبار و یادداشت‌ها", en: "News & notes", thumb: "news", description: "مطالب و تحلیل‌های گردآوری‌شده", enDescription: "Collected articles and commentary" },
     { id: "resources", href: "resources.html", label: "منابع و مراجع", en: "Sources & resources", thumb: "resources", description: "لینک منابع و ابزارهای مرتبط", enDescription: "Reference links and related tools" },
@@ -94,6 +95,9 @@ export function footer(): string {
           <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">Rockstar Games — GTA VI</a></li>
           <li><a href="https://www.rockstargames.com/VI/media/screenshots" target="_blank" rel="noopener">Official screenshots</a></li>
           <li><a href="https://www.gtabase.com/gta-6/vehicles/" target="_blank" rel="noopener">GTABase — Vehicles</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/characters/" target="_blank" rel="noopener">GTABase — Characters</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/properties/" target="_blank" rel="noopener">GTABase — Properties</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/missions/" target="_blank" rel="noopener">GTABase — Missions</a></li>
           <li><a href="https://www.gtabase.com/gta-6/map-locations/" target="_blank" rel="noopener">GTABase — Locations</a></li>
           <li><a href="https://github.com/sahandse/gta6" target="_blank" rel="noopener">GitHub repository</a></li>
         </ul>
