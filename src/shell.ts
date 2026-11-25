@@ -50,7 +50,7 @@ function navLink(item: NavItem, page: string): string {
 export function header(page: string): string {
   return `<header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="GTA VI HUB"><img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Grand_Theft_Auto_VI_logo.svg" alt="Grand Theft Auto VI" width="52" height="41"><span class="brand-label">HUB</span></a>
+    <a class="brand" href="index.html" aria-label="GTA VI HUB"><span class="brand-mark" aria-label="Grand Theft Auto VI">VI</span><span class="brand-label">HUB</span></a>
     <nav class="nav-links" id="mainnav" aria-label="ناوبری اصلی">
       <div class="nav-menu-head"><span data-fa="منوی اصلی لئونیدا" data-en="LEONIDA MAIN MENU">منوی اصلی لئونیدا</span><small>GRAND THEFT AUTO VI / FAN REFERENCE</small></div>
       ${navGroups.map((group) => `<section class="nav-menu-group nav-menu-group--${group.id}"><h3><span data-fa="${group.label}" data-en="${group.en}">${group.label}</span><i>0${navGroups.indexOf(group)+1}</i></h3>${group.items.map((item) => navLink(item, page)).join("")}</section>`).join("")}
@@ -77,7 +77,7 @@ export function footer(): string {
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="index.html" aria-label="GTA VI HUB"><img class="brand-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/94/Grand_Theft_Auto_VI_logo.svg" alt="Grand Theft Auto VI" width="52" height="41"><span class="brand-label">HUB</span></a>
+        <a class="brand" href="index.html" aria-label="GTA VI HUB"><span class="brand-mark" aria-label="Grand Theft Auto VI">VI</span><span class="brand-label">HUB</span></a>
         <p class="footer-about" data-fa="یک پروژه‌ی هواداری مستقل برای مستندسازی دنیای Grand Theft Auto VI و ایالت لئونیدا." data-en="An independent fan-made reference hub for Grand Theft Auto VI and the state of Leonida.">یک پروژه‌ی هواداری مستقل برای مستندسازی دنیای Grand Theft Auto VI و ایالت لئونیدا.</p>
       </div>
       <div>
@@ -92,7 +92,10 @@ export function footer(): string {
         <h5 data-fa="منابع رسمی" data-en="Official sources">منابع رسمی</h5>
         <ul>
           <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">Rockstar Games — GTA VI</a></li>
-          <li><a href="https://www.rockstargames.com/VI/media" target="_blank" rel="noopener">Official media</a></li>
+          <li><a href="https://www.rockstargames.com/VI/media/screenshots" target="_blank" rel="noopener">Official screenshots</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/characters/" target="_blank" rel="noopener">GTABase — Characters</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/vehicles/" target="_blank" rel="noopener">GTABase — Vehicles</a></li>
+          <li><a href="https://www.gtabase.com/gta-6/map-locations/" target="_blank" rel="noopener">GTABase — Locations</a></li>
           <li><a href="https://github.com/sahandse/gta6" target="_blank" rel="noopener">GitHub repository</a></li>
         </ul>
       </div>
