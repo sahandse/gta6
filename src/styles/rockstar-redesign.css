@@ -115,3 +115,59 @@ a{color:inherit}
  .page-head{padding-top:68px!important}
 }
 @media(max-width:420px){.video-feature-grid{grid-template-columns:1fr}.video-feature-card--main{grid-column:auto}.hero-actions .btn{width:100%;justify-content:center}}
+
+
+/* HOME — cinematic Rockstar-inspired landing composition */
+body[data-page="home"] .site-header{position:absolute!important;inset:0 0 auto;z-index:30;background:linear-gradient(180deg,rgba(0,0,0,.72),transparent)!important;border:0!important}
+body[data-page="home"] .nav-wrap{height:92px!important}
+body[data-page="home"] .hero{
+  position:relative;isolation:isolate;min-height:min(940px,100svh)!important;height:100svh;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  overflow:hidden;background:#08090b!important;text-align:center!important
+}
+body[data-page="home"] .hero:before{
+  inset:0!important;background-image:url("https://www.rockstargames.com/VI/_next/static/media/Vice_City_13.0iq8ff474tsdx.jpg?akim=1&imdensity=1&imwidth=2560")!important;
+  background-position:center 46%!important;background-size:cover!important;transform:scale(1.015)!important
+}
+body[data-page="home"] .hero:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(0,0,0,.48) 0%,rgba(0,0,0,.10) 32%,rgba(0,0,0,.25) 58%,#08090b 100%)!important
+}
+body[data-page="home"] .hero-content{
+  width:min(980px,calc(100% - 40px))!important;padding:145px 0 95px!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center
+}
+body[data-page="home"] .hero .eyebrow{font-size:10px!important;letter-spacing:.32em!important;color:#f0d6ae!important;margin-bottom:24px}
+body[data-page="home"] .hero-game-logo{width:clamp(230px,34vw,440px)!important;max-height:280px!important;margin:0 auto 12px;filter:drop-shadow(0 8px 28px #000b)}
+body[data-page="home"] .hero h1{font-size:clamp(36px,5.2vw,68px)!important;line-height:1.16!important;margin:4px 0 12px!important;text-shadow:0 5px 24px #000}
+body[data-page="home"] .hero h1 span{color:#e8cda7!important}
+body[data-page="home"] .hero p{max-width:620px!important;font-size:clamp(13px,1.3vw,16px)!important;line-height:2!important;color:#f2eee8!important;text-shadow:0 2px 14px #000;margin:0 auto 24px!important}
+body[data-page="home"] .hero-actions{justify-content:center!important;gap:10px!important}
+body[data-page="home"] .hero-actions .btn{min-width:170px;min-height:48px!important;letter-spacing:.08em!important}
+body[data-page="home"] .hero-meta{width:min(720px,100%);justify-content:center!important;border-top:1px solid #ffffff55!important;margin:48px auto 0!important;padding-top:18px!important}
+body[data-page="home"] .hero-meta div{font-size:9px;letter-spacing:.16em}
+body[data-page="home"] .hero-meta strong{display:block;font-size:28px!important;margin-bottom:7px}
+body[data-page="home"] .official-gallery{padding-top:78px!important}
+body[data-page="home"] .official-gallery-grid{grid-auto-rows:clamp(180px,23vw,310px)!important;gap:5px!important}
+body[data-page="home"] .main-menu-console{margin-top:32px!important}
+body[data-page="home"] .section-heading{align-items:end}
+body[data-page="home"] .home-block{padding-top:55px!important}
+@media(max-width:760px){
+ body[data-page="home"] .nav-wrap{height:68px!important}
+ body[data-page="home"] .hero{height:auto;min-height:780px!important}
+ body[data-page="home"] .hero-content{width:calc(100% - 34px)!important;padding:140px 0 62px!important}
+ body[data-page="home"] .hero-game-logo{width:min(78vw,300px)!important;max-height:190px!important}
+ body[data-page="home"] .hero .eyebrow{font-size:8px!important;letter-spacing:.2em!important}
+ body[data-page="home"] .hero h1{font-size:clamp(35px,10vw,48px)!important}
+ body[data-page="home"] .hero p{max-width:430px!important;font-size:13px!important}
+ body[data-page="home"] .hero-meta{gap:20px!important;margin-top:34px!important}
+ body[data-page="home"] .hero-meta strong{font-size:22px!important}
+ body[data-page="home"] .official-gallery-grid{grid-auto-rows:clamp(130px,37vw,210px)!important}
+}
+@media(max-width:420px){
+ body[data-page="home"] .hero{min-height:720px!important}
+ body[data-page="home"] .hero-actions{width:100%;flex-direction:column}
+ body[data-page="home"] .hero-actions .btn{width:100%;max-width:290px}
+ body[data-page="home"] .hero-meta{gap:12px!important}
+ body[data-page="home"] .hero-meta div{font-size:8px}
+}
