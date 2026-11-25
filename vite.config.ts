@@ -19,6 +19,7 @@ function htmlShell() {
 
 const pages = [
   "index",
+  "database",
   "vehicles",
   "characters",
   "map",
