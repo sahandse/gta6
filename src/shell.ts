@@ -4,26 +4,37 @@ interface NavItem {
   label: string;
   en: string;
   thumb: string;
+  description: string;
 }
 
-const navItems: NavItem[] = [
-  { id: "home", href: "index.html", label: "خانه", en: "Home", thumb: "home" },
-  { id: "map", href: "map.html", label: "نقشه لئونیدا", en: "Leonida Map", thumb: "map" },
-  { id: "vehicles", href: "vehicles.html", label: "وسایل نقلیه", en: "Vehicles", thumb: "vehicles" },
-  { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters" },
-  
-  { id: "news", href: "news.html", label: "اخبار", en: "News", thumb: "news" },
-  { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission Guide", thumb: "guides" },
-  { id: "resources", href: "resources.html", label: "منابع", en: "Resources", thumb: "resources" },
+interface NavGroup {
+  id: string;
+  label: string;
+  en: string;
+  items: NavItem[];
+}
+
+const navGroups: NavGroup[] = [
+  { id: "world", label: "جهان لئونیدا", en: "LEONIDA WORLD", items: [
+    { id: "map", href: "map.html", label: "نقشه تعاملی", en: "Interactive map", thumb: "map", description: "کاوش مناطق و مکان‌ها" },
+    { id: "database", href: "map.html#database", label: "بانک مکان‌ها", en: "Place database", thumb: "regions", description: "جست‌وجو در فهرست مکان‌ها" },
+    { id: "progress", href: "map.html#progress", label: "پیشرفت اکتشاف", en: "Exploration progress", thumb: "map", description: "بازدیدها و علاقه‌مندی‌ها" },
+  ]},
+  { id: "story", label: "داستان و شخصیت‌ها", en: "STORY & PEOPLE", items: [
+    { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission guide", thumb: "guides", description: "چک‌لیست و پیگیری داستان" },
+    { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters", description: "پروفایل چهره‌های شناخته‌شده" },
+  ]},
+  { id: "garage", label: "گاراژ و آرشیو", en: "GARAGE & ARCHIVE", items: [
+    { id: "vehicles", href: "vehicles.html", label: "دیتابیس وسایل نقلیه", en: "Vehicle database", thumb: "vehicles", description: "فیلتر و مقایسه مشخصات ثبت‌شده" },
+    { id: "news", href: "news.html", label: "اخبار و یادداشت‌ها", en: "News & notes", thumb: "news", description: "مطالب و تحلیل‌های گردآوری‌شده" },
+    { id: "resources", href: "resources.html", label: "منابع و مراجع", en: "Sources & resources", thumb: "resources", description: "لینک منابع و ابزارهای مرتبط" },
+  ]},
 ];
 
+const allItems = navGroups.flatMap((group) => group.items);
 const footerLinks: Record<string, NavItem[]> = {
-  database: [
-    navItems[2]!,
-    navItems[3]!,
-    navItems[1]!,
-  ],
-  guides: [navItems[5]!, navItems[6]!],
+  database: [allItems[5]!, allItems[1]!, allItems[0]!],
+  guides: [allItems[3]!, allItems[6]!],
 };
 
 function thumb(item: NavItem): string {
@@ -32,7 +43,7 @@ function thumb(item: NavItem): string {
 
 function navLink(item: NavItem, page: string): string {
   const active = item.id === page ? ' class="active" aria-current="page"' : "";
-  return `<a href="${item.href}"${active}>${thumb(item)}<span data-fa="${item.label}" data-en="${item.en}">${item.label}</span></a>`;
+  return `<a href="${item.href}"${active}> ${thumb(item)}<span class="nav-link-copy"><b data-fa="${item.label}" data-en="${item.en}">${item.label}</b><small data-fa="${item.description}" data-en="${item.description}">${item.description}</small></span></a>`;
 }
 
 export function header(page: string): string {
@@ -40,7 +51,9 @@ export function header(page: string): string {
   <div class="nav-wrap">
     <a class="brand" href="index.html" aria-label="GTA VI HUB"><span class="brand-mark">VI</span><span class="brand-word">GTA <b>VI</b> HUB</span></a>
     <nav class="nav-links" id="mainnav" aria-label="ناوبری اصلی">
-      ${navItems.map((item) => navLink(item, page)).join("\n      ")}
+      <div class="nav-menu-head"><span data-fa="منوی اصلی لئونیدا" data-en="LEONIDA MAIN MENU">منوی اصلی لئونیدا</span><small>GRAND THEFT AUTO VI / FAN REFERENCE</small></div>
+      ${navGroups.map((group) => `<section class="nav-menu-group nav-menu-group--${group.id}"><h3><span data-fa="${group.label}" data-en="${group.en}">${group.label}</span><i>0${navGroups.indexOf(group)+1}</i></h3>${group.items.map((item) => navLink(item, page)).join("")}</section>`).join("")}
+      <a class="nav-official-link" href="https://www.rockstargames.com/VI/media" target="_blank" rel="noopener"><span>↗</span><b data-fa="رسانه رسمی Rockstar" data-en="Official Rockstar media">رسانه رسمی Rockstar</b></a>
     </nav>
     <div class="nav-tools">
       <label class="search-wrap" aria-label="جست‌وجو">
@@ -48,7 +61,7 @@ export function header(page: string): string {
         <input type="search" placeholder="جست‌وجو…" aria-label="جست‌وجو" data-global-search>
       </label>
       <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">EN</button>
-      <button class="menu-toggle" type="button" aria-label="باز کردن منوی بازی" aria-expanded="false" aria-controls="mainnav"><span aria-hidden="true">☰</span><span data-fa="منوی بازی" data-en="GAME MENU">منوی بازی</span></button>
+      <button class="menu-toggle" type="button" aria-label="باز کردن منوی اصلی" aria-expanded="false" aria-controls="mainnav"><span aria-hidden="true">☰</span><span data-fa="منوی اصلی" data-en="MAIN MENU">منوی اصلی</span></button>
     </div>
   </div>
 </header>`;
@@ -75,16 +88,16 @@ export function footer(): string {
         <ul>${footerLinks.guides!.map(footerLink).join("")}</ul>
       </div>
       <div>
-        <h5 data-fa="درباره" data-en="About">درباره</h5>
+        <h5 data-fa="منابع رسمی" data-en="Official sources">منابع رسمی</h5>
         <ul>
-          <li><a href="https://github.com/sahandse/gta6" target="_blank" rel="noopener">مخزن GitHub</a></li>
-          <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">سایت رسمی</a></li>
-          <li><a href="https://www.rockstargames.com/VI/media" target="_blank" rel="noopener">گالری رسمی</a></li>
+          <li><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener">Rockstar Games — GTA VI</a></li>
+          <li><a href="https://www.rockstargames.com/VI/media" target="_blank" rel="noopener">Official media</a></li>
+          <li><a href="https://github.com/sahandse/gta6" target="_blank" rel="noopener">GitHub repository</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> GTA VI HUB — ساخته‌شده با ❤️ برای جامعه‌ی GTA.</span>
+      <span>© <span data-year>2026</span> GTA VI HUB — ساخته‌شده برای جامعه‌ی GTA.</span>
       <span data-fa="پروژه‌ی هواداری مستقل؛ وابسته به Rockstar Games نیست." data-en="Independent fan project; not affiliated with Rockstar Games.">پروژه‌ی هواداری مستقل؛ وابسته به Rockstar Games نیست.</span>
     </div>
   </div>
