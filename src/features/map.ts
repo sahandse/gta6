@@ -527,6 +527,8 @@ export function initMapPage(): void {
       renderSelected();
       renderProgress();
       renderRouteSelects();
+      const requestedTab = location.hash.slice(1);
+      if (requestedTab === "database" || requestedTab === "progress") switchTab(requestedTab);
 
       count("[data-map-total]", places.length + custom.length);
       const label = qs<HTMLElement>("[data-map-zoom-label]");
