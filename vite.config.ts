@@ -21,10 +21,8 @@ const pages = [
   "index",
   "vehicles",
   "characters",
-  "weapons",
   "map",
   "news",
-  "cheats",
   "resources",
   "guides",
 ];
