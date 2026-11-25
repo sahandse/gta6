@@ -317,3 +317,33 @@ body[data-page="home"] .rh-collection [data-home-vehicles]{display:grid;grid-tem
 body[data-page="home"] .rh-collection [data-home-vehicles] .mini-card{min-width:0;background:#151515}
 @media(max-width:900px){body[data-page="home"] .rh-collection [data-home-vehicles]{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){body[data-page="home"] .rh-collection [data-home-vehicles]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Hard stop: no cinematic/banner media on internal database pages */
+body:not([data-page="home"]) .hero,
+body:not([data-page="home"]) .hero::before,
+body:not([data-page="home"]) .hero::after,
+body:not([data-page="home"]) .page-head::before,
+body:not([data-page="home"]) .page-head::after,
+body:not([data-page="home"]) .page-head picture,
+body:not([data-page="home"]) .page-head img,
+body:not([data-page="home"]) .page-head video,
+body:not([data-page="home"]) .page-head .hero-media,
+body:not([data-page="home"]) .page-head .hero-image{
+  display:none!important;
+  content:none!important;
+  background-image:none!important;
+}
+body:not([data-page="home"]) .page-head{
+  display:block!important;
+  min-height:0!important;
+  height:auto!important;
+  padding:34px 0 24px!important;
+  margin:0 auto 22px!important;
+  overflow:visible!important;
+  background:#0b0b0b!important;
+  border-bottom:1px solid rgba(212,189,152,.2)!important;
+}
+body:not([data-page="home"]) main{padding-top:0!important}
+body:not([data-page="home"]) .page-head h1{margin:12px 0 8px!important}
+body:not([data-page="home"]) .page-head p{margin:0!important;max-width:760px!important}
