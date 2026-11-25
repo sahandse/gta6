@@ -159,3 +159,24 @@ html[lang="en"] .game-launch-card{text-align:left}
  .hero-content{padding-top:120px!important;padding-bottom:28px!important}
  .hero-media img{object-position:center 32%}
 }
+
+
+/* GTA VI identity: official wordmark + condensed in-game typography */
+.brand{display:inline-flex!important;align-items:center!important;gap:8px!important;min-width:0}
+.brand-logo{display:block;width:clamp(42px,4.2vw,54px);height:auto;max-height:44px;object-fit:contain;filter:drop-shadow(0 3px 9px #0008)}
+.brand-label{align-self:flex-end;margin-bottom:2px;padding:2px 5px;border:1px solid #ffffff35;background:#17101bbd;color:#f5dce7;font:900 9px/1 Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;letter-spacing:.18em}
+.hero-game-logo{display:block;width:clamp(118px,16vw,190px);height:auto;max-height:148px;object-fit:contain;object-position:left center;margin:15px 0 4px;filter:drop-shadow(0 10px 25px #0009)}
+.hero h1{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",Vazirmatn,sans-serif!important;font-weight:900!important;letter-spacing:-.025em!important;text-transform:uppercase}
+.section-heading h2,.console-heading h2,.console-group>header h3,.page-head h1,.section-kicker,.eyebrow,.console-topline,.console-group>header>span,.console-item i,.nav-menu-head,.nav-menu-group h3,.brand-label{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",Vazirmatn,sans-serif}
+.section-kicker,.eyebrow,.console-topline,.nav-menu-head{letter-spacing:.16em}
+.nav-menu-group h3,.console-group>header h3{font-weight:900}
+.btn,.console-item b,.nav-link-copy b{font-weight:900}
+html[lang="en"] body,html[lang="en"] button,html[lang="en"] input{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",Arial,sans-serif}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3,html[lang="en"] .nav-menu-group h3,html[lang="en"] .console-item b{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",Arial,sans-serif;letter-spacing:.035em}
+html[lang="fa"] body{font-family:Vazirmatn,"Segoe UI",Tahoma,sans-serif}
+html[lang="fa"] h1,html[lang="fa"] h2,html[lang="fa"] h3{font-family:Vazirmatn,"Segoe UI",Tahoma,sans-serif}
+@media(max-width:640px){
+ .brand-logo{width:42px;max-height:34px}
+ .brand-label{font-size:8px}
+ .hero-game-logo{width:clamp(108px,31vw,145px);max-height:112px;margin:12px 0 2px}
+}
