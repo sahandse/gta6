@@ -127,4 +127,31 @@ export function initUI(): void {
   initCounters();
   initGlobalSearch();
   initYear();
+  initGamepad();
+}
+
+export function initGamepad(): void {
+  let last = 0;
+  let previous = false;
+  let running = false;
+  const tick = (now: number): void => {
+    const pad = navigator.getGamepads?.().find(p => p && p.connected);
+    if (!pad) { running = false; return; }
+    const items = Array.from(document.querySelectorAll<HTMLElement>("a[href],button:not([disabled]),input:not([disabled]),select:not([disabled])")).filter(el => el.getClientRects().length > 0 && !el.closest("[hidden]"));
+    const index = items.indexOf(document.activeElement as HTMLElement);
+    const forward = pad.buttons[15]?.pressed || pad.buttons[13]?.pressed || (pad.axes[0] ?? 0) > .65 || (pad.axes[1] ?? 0) > .65;
+    const back = pad.buttons[14]?.pressed || pad.buttons[12]?.pressed || (pad.axes[0] ?? 0) < -.65 || (pad.axes[1] ?? 0) < -.65;
+    if (items.length && now-last > 220 && (forward || back)) {
+      const next = index < 0 ? 0 : (index + (forward ? 1 : -1) + items.length) % items.length;
+      items[next]?.focus();
+      last = now;
+    }
+    const confirm = Boolean(pad.buttons[0]?.pressed);
+    if (confirm && !previous && document.activeElement instanceof HTMLElement && !document.activeElement.matches("input,select,textarea")) document.activeElement.click();
+    previous = confirm;
+    requestAnimationFrame(tick);
+  };
+  const start = (): void => { if (!running) { running = true; requestAnimationFrame(tick); } };
+  window.addEventListener("gamepadconnected", start);
+  if (navigator.getGamepads?.().some(p => p && p.connected)) start();
 }
