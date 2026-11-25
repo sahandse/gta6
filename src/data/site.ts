@@ -380,67 +380,31 @@ export const weapons: Weapon[] = [
 
 export const news: NewsItem[] = [
   {
-    title: "نقشه‌ی تعاملی Leonida منتشر شد: همه‌ی مناطق قابل کشف",
-    cat: "GTA 6",
-    date: "۲ روز پیش",
-    read: "۴ دقیقه",
-    glyph: "MAP",
-    color: ["#22e0ff", "#8a5cff"],
-    excerpt:
-      "نسخه‌ی جدید نقشه با جزئیات کامل سواحل، جاده‌ها و نقاط مخفی؛ همراه با فیلتر دسته‌بندی.",
-    image: "regions/keys",
+    "title": "معرفی رسمی ایالت لئونیدا",
+    "cat": "دنیای بازی",
+    "date": "منبع: Rockstar Games",
+    "read": "معرفی",
+    "glyph": "MAP",
+    "color": [
+      "#ff91b5",
+      "#ff9255"
+    ],
+    "excerpt": "شش منطقه معرفی‌شده شامل Vice City، Leonida Keys، Grassrivers، Port Gellhorn، Ambrosia و Mount Kalaga هستند.",
+    "image": "regions/keys"
   },
   {
-    title: "بررسی کامل سیستم رانندگی: فیزیک جدید و حس وزن",
-    cat: "تحلیل",
-    date: "۴ روز پیش",
-    read: "۷ دقیقه",
-    glyph: "DRV",
-    color: ["#ff2d95", "#ff8a00"],
-    excerpt:
-      "Rockstar از فیزیک ارتقایافته‌ی وسایل نقلیه پرده برداشت؛ آنچه در ۳۰ ساعت بازی دیدیم.",
-    image: "vehicles/grotti-cheetah",
-  },
-  {
-    title: "همه‌چیز درباره‌ی حالت Co-op و مأموریت‌های دو نفره",
-    cat: "راهنما",
-    date: "۱ هفته پیش",
-    read: "۵ دقیقه",
-    glyph: "CO-OP",
-    color: ["#37f5a1", "#22e0ff"],
-    excerpt: "چطور با دوستتان داستان را جلو ببرید و کدام مأموریت‌ها واقعاً دونفره طراحی شده‌اند.",
-    image: "hero/jason-lucia",
-  },
-  {
-    title: "لیست کامل وسایل نقلیه‌ی تأییدشده تا امروز",
-    cat: "دیتابیس",
-    date: "۱ هفته پیش",
-    read: "۹ دقیقه",
-    glyph: "CAR",
-    color: ["#ff8a00", "#ffd166"],
-    excerpt: "از سوپر اسپرت‌های برقی تا قایق‌های مسابقه‌ای؛ با مشخصات و قیمت تقریبی.",
-    image: "vehicles/safehouse-1",
-  },
-  {
-    title: "راهنمای ۱۰۰٪ تکمیل: چک‌لیست مأموریت‌های فرعی",
-    cat: "راهنما",
-    date: "۲ هفته پیش",
-    read: "۱۲ دقیقه",
-    glyph: "100",
-    color: ["#8a5cff", "#ff2d95"],
-    excerpt: "تمام کارهای جانبی، حیوانات کمیاب و رویدادهای تصادفی که برای ۱۰۰٪ لازم است.",
-    image: "regions/grassrivers",
-  },
-  {
-    title: "تنظیمات گرافیکی پیشنهادی برای PS5 و Xbox",
-    cat: "فنی",
-    date: "۲ هفته پیش",
-    read: "۶ دقیقه",
-    glyph: "4K",
-    color: ["#22e0ff", "#37f5a1"],
-    excerpt: "حالت Performance یا Quality؟ مقایسه‌ی نرخ فریم و کیفیت تصویر در هر دو کنسول.",
-    image: "regions/vice-city",
-  },
+    "title": "معرفی جیسون و لوسیا",
+    "cat": "شخصیت‌ها",
+    "date": "منبع: Rockstar Games",
+    "read": "معرفی",
+    "glyph": "VI",
+    "color": [
+      "#ff91b5",
+      "#8a56dc"
+    ],
+    "excerpt": "جیسون دووال و لوسیا کامینوس دو شخصیت اصلی معرفی‌شده بازی هستند.",
+    "image": "hero/jason-lucia"
+  }
 ];
 
 export const cheats: Cheat[] = [
