@@ -2,25 +2,26 @@ interface NavItem {
   id: string;
   href: string;
   label: string;
+  en: string;
   thumb: string;
 }
 
 const navItems: NavItem[] = [
-  { id: "home", href: "index.html", label: "خانه", thumb: "home" },
-  { id: "map", href: "map.html", label: "نقشه لئونیدا", thumb: "map" },
-  { id: "vehicles", href: "vehicles.html", label: "وسایل نقلیه", thumb: "vehicles" },
-  { id: "characters", href: "characters.html", label: "شخصیت‌ها", thumb: "characters" },
-  { id: "weapons", href: "weapons.html", label: "سلاح‌ها", thumb: "weapons" },
-  { id: "news", href: "news.html", label: "اخبار", thumb: "news" },
-  { id: "cheats", href: "cheats.html", label: "چیت‌ها", thumb: "cheats" },
-  { id: "resources", href: "resources.html", label: "منابع", thumb: "resources" },
+  { id: "home", href: "index.html", label: "خانه", en: "Home", thumb: "home" },
+  { id: "map", href: "map.html", label: "نقشه لئونیدا", en: "Leonida Map", thumb: "map" },
+  { id: "vehicles", href: "vehicles.html", label: "وسایل نقلیه", en: "Vehicles", thumb: "vehicles" },
+  { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters" },
+  
+  { id: "news", href: "news.html", label: "اخبار", en: "News", thumb: "news" },
+  { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission Guide", thumb: "guides" },
+  { id: "cheats", href: "cheats.html", label: "چیت‌ها", en: "Cheats", thumb: "cheats" },
+  { id: "resources", href: "resources.html", label: "منابع", en: "Resources", thumb: "resources" },
 ];
 
 const footerLinks: Record<string, NavItem[]> = {
   database: [
     navItems[2]!,
     navItems[3]!,
-    navItems[4]!,
     navItems[1]!,
   ],
   guides: [navItems[5]!, navItems[6]!, navItems[7]!],
@@ -32,13 +33,13 @@ function thumb(item: NavItem): string {
 
 function navLink(item: NavItem, page: string): string {
   const active = item.id === page ? ' class="active" aria-current="page"' : "";
-  return `<a href="${item.href}"${active}>${thumb(item)}<span>${item.label}</span></a>`;
+  return `<a href="${item.href}"${active}>${thumb(item)}<span data-fa="${item.label}" data-en="${item.en}">${item.label}</span></a>`;
 }
 
 export function header(page: string): string {
   return `<header class="site-header">
   <div class="nav-wrap">
-    <a class="brand" href="index.html" aria-label="GTA VI HUB">GTA <b>VI</b> HUB</a>
+    <a class="brand" href="index.html" aria-label="GTA VI HUB"><span class="brand-mark">VI</span><span class="brand-word">GTA <b>VI</b> HUB</span></a>
     <nav class="nav-links" id="mainnav" aria-label="ناوبری اصلی">
       ${navItems.map((item) => navLink(item, page)).join("\n      ")}
     </nav>
@@ -47,6 +48,7 @@ export function header(page: string): string {
         <span aria-hidden="true">⌕</span>
         <input type="search" placeholder="جست‌وجو…" aria-label="جست‌وجو" data-global-search>
       </label>
+      <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">EN</button>
       <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainnav">☰</button>
     </div>
   </div>
@@ -62,7 +64,7 @@ export function footer(): string {
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="index.html" aria-label="GTA VI HUB">GTA <b>VI</b> HUB</a>
+        <a class="brand" href="index.html" aria-label="GTA VI HUB"><span class="brand-mark">VI</span><span class="brand-word">GTA <b>VI</b> HUB</span></a>
         <p class="footer-about">یک پروژه‌ی هواداری مستقل برای مستندسازی دنیای Grand Theft Auto VI و ایالت لئونیدا.</p>
       </div>
       <div>
