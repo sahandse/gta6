@@ -307,3 +307,13 @@ body[data-page="characters"] .page-head,body[data-page="vehicles"] .page-head,bo
 .rh-wordmark span{font:700 clamp(12px,1.5vw,17px)/1 Impact,Haettenschweiler,sans-serif;letter-spacing:.32em}
 .rh-wordmark strong{font:clamp(110px,18vw,210px)/.78 Impact,Haettenschweiler,sans-serif;letter-spacing:-.08em;color:#f4e7d2}
 @media(max-width:700px){.brand-mark{width:40px;height:36px;font-size:25px}.page-head{padding:66px 0 22px!important}}
+
+
+/* Consistent data cards */
+.profile-source,.vehicle-data-note{margin-top:16px;padding-top:12px;border-top:1px solid #ffffff20;color:#cdbb9e;font-size:11px;line-height:1.8}
+.profile-source{display:flex;flex-direction:column;gap:3px}
+.profile-source small{color:#92918c;font-size:10px}
+body[data-page="home"] .rh-collection [data-home-vehicles]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+body[data-page="home"] .rh-collection [data-home-vehicles] .mini-card{min-width:0;background:#151515}
+@media(max-width:900px){body[data-page="home"] .rh-collection [data-home-vehicles]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){body[data-page="home"] .rh-collection [data-home-vehicles]{grid-template-columns:repeat(2,minmax(0,1fr))}}
