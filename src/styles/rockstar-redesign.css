@@ -293,3 +293,17 @@ body[data-page="home"] .site-footer{background:#080808!important}
  body[data-page="home"] .rh-gallery-grid{grid-template-columns:1fr}
  body[data-page="home"] .rh-gallery-grid a:first-child{grid-column:auto}
 }
+
+/* Final consistency and broken-image cleanup */
+.brand-mark{display:grid;place-items:center;width:48px;height:42px;border:1px solid #cbb18c;color:#e4d0ad;font:30px/.9 Impact,Haettenschweiler,sans-serif;letter-spacing:-.06em}
+.brand-logo{display:none!important}
+.page-head{padding:76px 0 28px!important;min-height:0!important;margin-bottom:18px!important}
+.page-head::before{display:none!important;content:none!important;background:none!important}
+.page-head::after{display:none!important;content:none!important}
+body[data-page="characters"] .page-head,body[data-page="vehicles"] .page-head,body[data-page="news"] .page-head,body[data-page="resources"] .page-head{background:none!important}
+.page-head h1{max-width:100%;margin:8px 0!important}
+.page-head p{max-width:760px;color:#aaa9a4!important}
+.rh-wordmark{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;text-shadow:0 6px 22px #000b}
+.rh-wordmark span{font:700 clamp(12px,1.5vw,17px)/1 Impact,Haettenschweiler,sans-serif;letter-spacing:.32em}
+.rh-wordmark strong{font:clamp(110px,18vw,210px)/.78 Impact,Haettenschweiler,sans-serif;letter-spacing:-.08em;color:#f4e7d2}
+@media(max-width:700px){.brand-mark{width:40px;height:36px;font-size:25px}.page-head{padding:66px 0 22px!important}}
