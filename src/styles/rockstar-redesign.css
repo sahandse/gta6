@@ -406,3 +406,36 @@ body:not([data-page="home"]) .site-footer .wrap{padding-top:42px!important}
  .database-card h3{margin-top:18px;font-size:20px}
  .database-intro{align-items:flex-start;flex-direction:column}
 }
+
+
+/* MAP PAGE FIX — remove legacy cinematic poster/banner from map screen */
+html body[data-page="map"] .hero,
+html body[data-page="map"] .hero-media,
+html body[data-page="map"] .hero-image,
+html body[data-page="map"] .page-head,
+html body[data-page="map"] .map-poster,
+html body[data-page="map"] .map-hero img,
+html body[data-page="map"] .map-hero picture,
+html body[data-page="map"] .map-hero video{
+  display:none!important;visibility:hidden!important;max-height:0!important;height:0!important;min-height:0!important;overflow:hidden!important;
+}
+html body[data-page="map"] .map-hero,
+html body[data-page="map"] main.map-app,
+html body[data-page="map"] main.map-app>section:first-child{
+  background-image:none!important;background-color:transparent!important;box-shadow:none!important;
+}
+html body[data-page="map"] .map-hero::before,
+html body[data-page="map"] .map-hero::after,
+html body[data-page="map"] main.map-app::before,
+html body[data-page="map"] main.map-app::after,
+html body[data-page="map"] main.map-app>section:first-child::before,
+html body[data-page="map"] main.map-app>section:first-child::after{
+  content:none!important;display:none!important;background:none!important;background-image:none!important;
+}
+html body[data-page="map"] .map-app{padding-top:112px!important}
+html body[data-page="map"] .map-hero{
+  display:flex!important;min-height:0!important;height:auto!important;padding:24px 0 22px!important;margin:0 auto 18px!important;border-bottom:1px solid rgba(255,255,255,.12)!important;
+}
+html body[data-page="map"] .map-hero h1{font-size:clamp(28px,4vw,44px)!important;margin:6px 0!important}
+html body[data-page="map"] .map-hero p{max-width:720px!important;margin:0!important}
+@media(max-width:720px){html body[data-page="map"] .map-app{padding-top:88px!important}html body[data-page="map"] .map-hero{padding:16px 0!important}}
