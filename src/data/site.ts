@@ -41,13 +41,6 @@ export const hubSections: HubSection[] = [
     tag: "GARAGE",
   },
   {
-    title: "سلاح‌ها",
-    subtitle: "زرادخانه و آمار هر سلاح",
-    href: "weapons.html",
-    image: "weapons/variants",
-    tag: "ARSENAL",
-  },
-  {
     title: "اخبار و رسانه",
     subtitle: "تصاویر و خبرهای منتشرشده",
     href: "news.html",
