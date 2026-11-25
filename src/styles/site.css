@@ -36,3 +36,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 .nav-links a.active{border-color:#ff91b5!important;color:#ff91b5!important}
 @media(max-width:700px){.nav-wrap{flex-wrap:wrap}.nav-tools{min-width:0;flex-wrap:wrap}.search-wrap{max-width:100%}.page-head{margin-inline:12px!important}.card-grid,.database-grid,.tile-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr))!important}.toolbar>*{max-width:100%}.filter-pills{overflow-x:auto;max-width:100%}.game-home{padding:16px!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+.game-tabs{display:flex;align-items:stretch;gap:4px;min-width:0;overflow-x:auto;scrollbar-width:thin}
+.game-tabs a{display:flex;align-items:center;white-space:nowrap;padding:12px 16px;text-decoration:none;color:#b9b2c3;font-weight:700;border-bottom:3px solid transparent}
+.game-tabs a:hover,.game-tabs a:focus-visible,.game-tabs a[aria-current=page]{color:#fff;background:#2b2234;border-bottom-color:#ff91b5}
+.nav-wrap{display:flex!important;align-items:center;gap:12px}
+@media(max-width:1050px){.nav-wrap{flex-wrap:wrap}.game-tabs{order:3;flex:1 0 100%;width:100%}.game-tabs a{padding:10px 14px}.nav-tools{margin-inline-start:auto}}
+@media(max-width:480px){.game-tabs a{font-size:12px;padding:10px}.nav-wrap{gap:6px}.game-tabs{scroll-snap-type:x proximity}.game-tabs a{scroll-snap-align:start}}
