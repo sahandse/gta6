@@ -523,6 +523,12 @@ export function initMapPage(): void {
       initMap();
       renderCategories();
       renderAreas();
+      const initialQuery = new URLSearchParams(location.search).get("q");
+      if (initialQuery) {
+        filters.query = initialQuery;
+        const searchField = inputOf("[data-map-search]");
+        if (searchField) searchField.value = initialQuery;
+      }
       renderMarkers();
       renderSelected();
       renderProgress();
