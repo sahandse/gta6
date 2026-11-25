@@ -439,3 +439,21 @@ html body[data-page="map"] .map-hero{
 html body[data-page="map"] .map-hero h1{font-size:clamp(28px,4vw,44px)!important;margin:6px 0!important}
 html body[data-page="map"] .map-hero p{max-width:720px!important;margin:0!important}
 @media(max-width:720px){html body[data-page="map"] .map-app{padding-top:88px!important}html body[data-page="map"] .map-hero{padding:16px 0!important}}
+
+
+/* Definitive map-page banner removal: no cinematic media on map route */
+html body[data-page="map"] .hero,
+html body[data-page="map"] .hero-media,
+html body[data-page="map"] .hero-art,
+html body[data-page="map"] .hero-content,
+html body[data-page="map"] .hero-game-logo,
+html body[data-page="map"] .map-hero,
+html body[data-page="map"] main.map-app > img,
+html body[data-page="map"] main.map-app > video,
+html body[data-page="map"] main.map-app > iframe,
+html body[data-page="map"] main.map-app > picture {
+ display:none!important;content-visibility:hidden!important;height:0!important;min-height:0!important;max-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;
+}
+html body[data-page="map"] .site-header{position:relative!important;inset:auto!important;background:#090a0c!important}
+html body[data-page="map"] main.map-app{padding-top:24px!important;margin-top:0!important;background:#090a0c!important}
+html body[data-page="map"] .map-workspace{margin-top:0!important}
