@@ -14,7 +14,6 @@ const navItems: NavItem[] = [
   
   { id: "news", href: "news.html", label: "اخبار", en: "News", thumb: "news" },
   { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission Guide", thumb: "guides" },
-  { id: "cheats", href: "cheats.html", label: "چیت‌ها", en: "Cheats", thumb: "cheats" },
   { id: "resources", href: "resources.html", label: "منابع", en: "Resources", thumb: "resources" },
 ];
 
@@ -24,7 +23,7 @@ const footerLinks: Record<string, NavItem[]> = {
     navItems[3]!,
     navItems[1]!,
   ],
-  guides: [navItems[5]!, navItems[6]!, navItems[7]!],
+  guides: [navItems[5]!, navItems[6]!],
 };
 
 function thumb(item: NavItem): string {
