@@ -48,7 +48,7 @@ export function header(page: string): string {
         <input type="search" placeholder="جست‌وجو…" aria-label="جست‌وجو" data-global-search>
       </label>
       <button class="language-toggle" type="button" data-language-toggle aria-label="Switch language">EN</button>
-      <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainnav">☰</button>
+      <button class="menu-toggle" type="button" aria-label="باز کردن منوی بازی" aria-expanded="false" aria-controls="mainnav"><span aria-hidden="true">☰</span><span data-fa="منوی بازی" data-en="GAME MENU">منوی بازی</span></button>
     </div>
   </div>
 </header>`;
