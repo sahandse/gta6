@@ -1,5 +1,5 @@
 import type { Vehicle } from "../types";
-import { escapeHTML, faNumber, gradient, statBar } from "../lib/dom";
+import { escapeHTML } from "../lib/dom";
 import { imageTag } from "../lib/media";
 
 export function vehicleCard(vehicle: Vehicle): string {
@@ -15,11 +15,8 @@ export function vehicleCard(vehicle: Vehicle): string {
     </div>
     <div class="card-body">
       <h3>${escapeHTML(vehicle.name)}</h3>
-      <p>سازنده: ${escapeHTML(vehicle.maker)} · قیمت: <b>${escapeHTML(vehicle.price)}</b></p>
-      <div class="stat-lines">
-        ${statBar("سرعت", vehicle.speed, gradient(vehicle.color))}
-        ${statBar("هندلینگ", vehicle.handling, "linear-gradient(90deg,#22e0ff,#8a5cff)")}
-      </div>
+      <p>سازنده: ${escapeHTML(vehicle.maker)} · قیمت و آمار فنی: هنوز منتشر نشده</p>
+      <div class="vehicle-data-note">نام و تصویر در رسانه رسمی نمایش داده شده؛ مشخصات عملکردی هنوز تأیید نشده است.</div>
       <div class="chip-row">${vehicle.tags.map((tag) => `<span class="chip">${escapeHTML(tag)}</span>`).join("")}</div>
     </div>
   </article>`;
@@ -31,7 +28,7 @@ export function vehicleSummary(vehicle: Vehicle): string {
     <span class="mini-copy">
       <strong>${escapeHTML(vehicle.name)}</strong>
       <small>${escapeHTML(vehicle.cls)} · ${escapeHTML(vehicle.maker)}</small>
-      <span class="mini-stats"><span>سرعت ${faNumber(vehicle.speed)}</span><span>هندلینگ ${faNumber(vehicle.handling)}</span></span>
+      <span class="mini-stats"><span>اطلاعات رسمی</span><span>مشخصات در انتظار انتشار</span></span>
     </span>
   </a>`;
 }
