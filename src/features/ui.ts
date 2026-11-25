@@ -5,16 +5,30 @@ export function initNavigation(): void {
   const nav = qs<HTMLElement>(".nav-links");
   if (!toggle || !nav) return;
 
-  toggle.addEventListener("click", () => {
-    const opened = nav.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(opened));
-  });
+  const close = (): void => {
+    nav.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+  const open = (): void => {
+    nav.classList.add("is-open");
+    document.body.classList.add("menu-open");
+    toggle.setAttribute("aria-expanded", "true");
+  };
 
+  toggle.addEventListener("click", () => {
+    nav.classList.contains("is-open") ? close() : open();
+  });
   nav.addEventListener("click", (event) => {
-    if ((event.target as Element).closest("a")) {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    }
+    if ((event.target as Element).closest("a")) close();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("is-open")) close();
+  });
+  document.addEventListener("click", (event) => {
+    if (!nav.classList.contains("is-open")) return;
+    const target = event.target as Node;
+    if (!nav.contains(target) && !toggle.contains(target)) close();
   });
 }
 
