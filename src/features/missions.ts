@@ -23,7 +23,6 @@ const missions: Mission[] = [
   { id:"c1-m19", chapter:1, name:"Day Release", fa:"مرخصی روزانه", noteFa:"زمان و مقصد قرارها را از پیام‌ها و نشانگرهای نقشه دنبال کن.", noteEn:"Use messages and map markers to follow appointment times and destinations." },
   { id:"c1-m20", chapter:1, name:"Swamped", fa:"گرفتار در باتلاق", noteFa:"در محیط طبیعی با دقت مسیر را دنبال کن و از نشانگرهای راهنما کمک بگیر.", noteEn:"Navigate the natural environment carefully and use the route markers." },
   { id:"c1-m21", chapter:1, name:"Don Gone", fa:"دانی رفته", noteFa:"نقطه شروع و مقصد را در نقشه تطبیق بده.", noteEn:"Match the starting point and destination on the map." },
-  { id:"c1-m22", chapter:1, name:"Donnie's Lost Drugs", fa:"—", noteFa:"برای حفظ تمرکز راهنما، جزئیات این مأموریت در این نسخه نمایش داده نمی‌شود.", noteEn:"Details for this mission are omitted from this guide edition." },
   { id:"c1-m23", chapter:1, name:"Recalibration", fa:"تنظیم دوباره", noteFa:"گفت‌وگوی شخصیت‌ها و پیام‌های جدید را بررسی کن.", noteEn:"Review character conversations and new messages." },
   { id:"c1-m24", chapter:1, name:"Tourist Trap", fa:"دام گردشگری", noteFa:"مسیر مقصد را روی نقشه دنبال کن و برای نقاط توقف وقت بگذار.", noteEn:"Follow the destination route and allow time for marked stops." },
   { id:"c1-m25", chapter:1, name:"Home Sweet Home", fa:"خانه شیرین خانه", noteFa:"پس از رسیدن به مقصد، اعلان‌های تکمیل هدف را بررسی کن.", noteEn:"Once you reach the destination, check the objective-completion prompts." },
