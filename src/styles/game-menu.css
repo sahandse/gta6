@@ -180,3 +180,10 @@ html[lang="fa"] h1,html[lang="fa"] h2,html[lang="fa"] h3{font-family:Vazirmatn,"
  .brand-label{font-size:8px}
  .hero-game-logo{width:clamp(108px,31vw,145px);max-height:112px;margin:12px 0 2px}
 }
+
+
+/* Final override: no stretched, low-resolution photo banners on inner pages. */
+.page-head{background:transparent!important;background-image:none!important;padding-top:88px!important;padding-bottom:30px!important}
+.page-head::before{display:none!important;background:none!important;background-image:none!important}
+.page-head::after{display:none!important;background:none!important}
+@media(max-width:760px){.page-head{padding-top:78px!important;padding-bottom:22px!important}}
