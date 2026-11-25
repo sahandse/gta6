@@ -85,7 +85,29 @@ export function initYear(): void {
   });
 }
 
+export function initLanguage(): void {
+  const key = "gta6-language-v1";
+  const apply = (language: "fa" | "en"): void => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
+    document.querySelectorAll<HTMLElement>("[data-fa][data-en]").forEach((element) => {
+      element.textContent = language === "en" ? element.dataset.en ?? "" : element.dataset.fa ?? "";
+    });
+    const button = qs<HTMLButtonElement>("[data-language-toggle]");
+    if (button) button.textContent = language === "fa" ? "EN" : "فارسی";
+    try { localStorage.setItem(key, language); } catch { /* private browsing */ }
+    window.dispatchEvent(new Event("gta-language-change"));
+  };
+  let language: "fa" | "en" = "fa";
+  try { language = localStorage.getItem(key) === "en" ? "en" : "fa"; } catch { /* default Persian */ }
+  apply(language);
+  qs<HTMLButtonElement>("[data-language-toggle]")?.addEventListener("click", () => {
+    apply(document.documentElement.lang === "fa" ? "en" : "fa");
+  });
+}
+
 export function initUI(): void {
+  initLanguage();
   initNavigation();
   initReveal();
   initCounters();
