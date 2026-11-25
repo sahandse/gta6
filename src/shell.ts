@@ -5,6 +5,7 @@ interface NavItem {
   en: string;
   thumb: string;
   description: string;
+  enDescription: string;
 }
 
 interface NavGroup {
@@ -16,18 +17,18 @@ interface NavGroup {
 
 const navGroups: NavGroup[] = [
   { id: "world", label: "جهان لئونیدا", en: "LEONIDA WORLD", items: [
-    { id: "map", href: "map.html", label: "نقشه تعاملی", en: "Interactive map", thumb: "map", description: "کاوش مناطق و مکان‌ها" },
-    { id: "database", href: "map.html#database", label: "بانک مکان‌ها", en: "Place database", thumb: "regions", description: "جست‌وجو در فهرست مکان‌ها" },
-    { id: "progress", href: "map.html#progress", label: "پیشرفت اکتشاف", en: "Exploration progress", thumb: "map", description: "بازدیدها و علاقه‌مندی‌ها" },
+    { id: "map", href: "map.html", label: "نقشه تعاملی", en: "Interactive map", thumb: "map", description: "کاوش مناطق و مکان‌ها", enDescription: "Explore regions and mapped places" },
+    { id: "database", href: "map.html#database", label: "بانک مکان‌ها", en: "Place database", thumb: "regions", description: "جست‌وجو در فهرست مکان‌ها", enDescription: "Search the place catalogue" },
+    { id: "progress", href: "map.html#progress", label: "پیشرفت اکتشاف", en: "Exploration progress", thumb: "map", description: "بازدیدها و علاقه‌مندی‌ها", enDescription: "Visited places and saved favorites" },
   ]},
   { id: "story", label: "داستان و شخصیت‌ها", en: "STORY & PEOPLE", items: [
-    { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission guide", thumb: "guides", description: "چک‌لیست و پیگیری داستان" },
-    { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters", description: "پروفایل چهره‌های شناخته‌شده" },
+    { id: "guides", href: "guides.html", label: "راهنمای مأموریت", en: "Mission guide", thumb: "guides", description: "چک‌لیست و پیگیری داستان", enDescription: "Story checklist and progress" },
+    { id: "characters", href: "characters.html", label: "شخصیت‌ها", en: "Characters", thumb: "characters", description: "پروفایل چهره‌های شناخته‌شده", enDescription: "Profiles of revealed characters" },
   ]},
   { id: "garage", label: "گاراژ و آرشیو", en: "GARAGE & ARCHIVE", items: [
-    { id: "vehicles", href: "vehicles.html", label: "دیتابیس وسایل نقلیه", en: "Vehicle database", thumb: "vehicles", description: "فیلتر و مقایسه مشخصات ثبت‌شده" },
-    { id: "news", href: "news.html", label: "اخبار و یادداشت‌ها", en: "News & notes", thumb: "news", description: "مطالب و تحلیل‌های گردآوری‌شده" },
-    { id: "resources", href: "resources.html", label: "منابع و مراجع", en: "Sources & resources", thumb: "resources", description: "لینک منابع و ابزارهای مرتبط" },
+    { id: "vehicles", href: "vehicles.html", label: "دیتابیس وسایل نقلیه", en: "Vehicle database", thumb: "vehicles", description: "فیلتر و مقایسه مشخصات ثبت‌شده", enDescription: "Browse and filter listed vehicles" },
+    { id: "news", href: "news.html", label: "اخبار و یادداشت‌ها", en: "News & notes", thumb: "news", description: "مطالب و تحلیل‌های گردآوری‌شده", enDescription: "Collected articles and commentary" },
+    { id: "resources", href: "resources.html", label: "منابع و مراجع", en: "Sources & resources", thumb: "resources", description: "لینک منابع و ابزارهای مرتبط", enDescription: "Reference links and related tools" },
   ]},
 ];
 
@@ -43,7 +44,7 @@ function thumb(item: NavItem): string {
 
 function navLink(item: NavItem, page: string): string {
   const active = item.id === page ? ' class="active" aria-current="page"' : "";
-  return `<a href="${item.href}"${active}> ${thumb(item)}<span class="nav-link-copy"><b data-fa="${item.label}" data-en="${item.en}">${item.label}</b><small data-fa="${item.description}" data-en="${item.description}">${item.description}</small></span></a>`;
+  return `<a href="${item.href}"${active}> ${thumb(item)}<span class="nav-link-copy"><b data-fa="${item.label}" data-en="${item.en}">${item.label}</b><small data-fa="${item.description}" data-en="${item.enDescription}">${item.description}</small></span></a>`;
 }
 
 export function header(page: string): string {
