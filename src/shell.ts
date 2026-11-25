@@ -35,7 +35,7 @@ const navGroups: NavGroup[] = [
 const allItems = navGroups.flatMap((group) => group.items);
 const footerLinks: Record<string, NavItem[]> = {
   database: [allItems[5]!, allItems[1]!, allItems[0]!],
-  guides: [allItems[3]!, allItems[6]!],
+  guides: [allItems[3]!, allItems[4]!],
 };
 
 function thumb(item: NavItem): string {
