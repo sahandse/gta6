@@ -26,6 +26,7 @@ const pages = [
   "news",
   "cheats",
   "resources",
+  "guides",
 ];
 
 export default defineConfig({
